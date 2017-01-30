@@ -1,0 +1,33 @@
+.home #page-header-bg {
+    display: none !important;
+}
+
+.container-wrap,
+.project-title {
+    background-color: white;
+}
+
+#boxed {
+    box-shadow: none;
+    background-color: white;
+
+    #header-space, .container-fluid {
+        background-color: white;
+    }
+}
+
+
+@media (max-width: 690px) and (min-width: 480px) {
+    #boxed {
+        width: 98% !important;
+    }
+}
+
+
+#footer-outer {
+    background-color: white;
+
+    #copyright {
+        background-color: white;
+    }
+}

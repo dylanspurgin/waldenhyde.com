@@ -1,0 +1,184 @@
+#boxed {
+    .home-page {
+        background-color: white;
+
+        .about-container {
+            background-color: #F3EEE8;
+        }
+    }
+}
+
+@media (max-width: 999px) {
+    .home--section-excerpt {
+        padding: 10px 40px;
+    }
+}
+
+.home--article {
+    padding: 0 20px;
+}
+
+.home--section-lead-in {
+    padding: 72px 10px 42px 10px;
+    font-size: 48px;
+    font-family: 'Serif';
+    line-height: 110%;
+    text-align: center;
+}
+
+.home .section-content {
+    padding-bottom: 40px;
+}
+
+@media (max-width: 690px) {
+    .home--section-lead-in {
+        padding: 27px 27px 27px 27px;
+        font-size: 32px;
+        font-family: 'Serif';
+        line-height: 125%;
+        text-align: center;
+    }
+
+    .home--section-excerpt {
+        font-size: 22px !important;
+        line-height: 32px !important;
+    }
+}
+
+.home--section-header {
+    text-align: center;
+    padding-bottom: 32px;
+    h2 {
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 2.5px;
+    }
+}
+
+.home--section-hr {
+    hr {
+        border: solid black 1px;
+        margin: 10px 0;
+    }
+    padding-bottom: 0;
+}
+
+.home--section-excerpt {
+    font-size: 28px;
+    line-height: 38px;
+    font-family: 'Serif';
+
+    p:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+}
+
+.section-content {
+    padding-bottom: 40px;
+}
+
+.grayscale {
+    -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+}
+
+div.portfolio-grid-thumbnail {
+    a {
+        background-size: contain;
+    }
+    .work-meta {
+        display: none;
+
+        .title {
+            font-family: sans-serif !important;
+        }
+    }
+}
+
+div.portfolio-grid-thumbnail:hover {
+    -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    cursor: pointer;
+
+    .work-meta {
+        display: block;
+        position: absolute;
+        font-size: 28px;
+        font-weight: bold;
+        color: #fff;
+        -webkit-text-stroke: #666 1px;
+        -moz-text-stroke: #666 1px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: right;
+        padding: 0 30px 20px 0;
+
+        .title {
+            font-family: sans-serif !important;
+        }
+
+    }
+}
+
+ul.capabilities-list {
+    font-family: Serif;
+    font-size: 18px;
+}
+
+li.capabilities-header {
+    font-weight: bold;
+    font-family: Serif;
+}
+
+.home--article {
+    font-family: Serif;
+
+    .article-title {
+        font-weight: bold;
+        font-size: 38px;
+    }
+
+    .article-excerpt {
+        font-size: 18px;
+        font-family: Crimson Text;
+    }
+
+    .article-source {
+        font-style: italic;
+    }
+
+
+    a.read-link {
+        color: black;
+    }
+
+    hr {
+        border-color: black;
+        line-height: 2px;
+    }
+}
+
+/*
+ * Make grid items the same height as their width
+ */
+.fixed-ratio {
+    display: inline-block;
+    position: relative;
+}
+.fixed-ratio:after {
+    content: '';
+    display: block;
+    margin-top: 100%;
+}
+.fixed-ratio>* {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
