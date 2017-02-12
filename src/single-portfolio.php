@@ -17,154 +17,112 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
 ?>
 <div <?php echo $full_width_portfolio; if(!empty($bg) && $fwp != 'enabled' || !empty($bg_color) && $fwp != 'enabled') echo ' data-project-header-bg="true"'?> >
 
-	  		<?php nectar_page_header($post->ID);
+    <?php
 
-			if(empty($bg) && empty($bg_color)) {?>
+        // TODO - Find the correct link back to all portfolio items
 
-				<div class="row project-title">
-					<div class="container">
-						<div class="title-wrap">
-						<div class="col span_12 section-title <?php if(empty($options['portfolio_social']) || $options['portfolio_social'] == 0 || empty($options['portfolio_date']) || $options['portfolio_date'] == 0 ) echo 'no-date'?>">
+        $portfolio_link = '/work'; // Default
 
-							<h1><?php the_title(); ?></h1>
+        // $options = get_option('salient');
+        //
+        // $back_to_all_override = get_post_meta($post->ID, 'nectar-metabox-portfolio-parent-override', true);
+        // if(empty($back_to_all_override)) $back_to_all_override = 'default';
+        //
+        // //attempt to find parent portfolio page - if unsuccessful default to main portfolio page
+        // global $post;
+        // $terms = get_the_terms($post->id,"project-type");
+        // $project_cat = null;
+        // $portfolio_link = null;
+        //
+        // if(empty($terms)) $terms = array('1' => (object) array('name' => 'nothing'));
+        //
+        //  foreach ( $terms as $term ) {
+        //     $project_cat = strtolower($term->name);
+        //  }
+        //
+        //  $page = get_page_by_title_search($project_cat);
+        //  if(empty($page)) $page = array( '0' => (object) array('ID' => 'nothing'));
+        //
+        //  $page_link = verify_portfolio_page($page[0]->ID);
+        //
+        //  //if a page has been found for the category
+        //  if(!empty($page_link) && $back_to_all_override == 'default') {
+        //     $portfolio_link = $page_link;
+        //
+        //
+        //  }
+        //
+        //  //if no category page exists
+        //  else {
+        //
+        //     $portfolio_link = get_portfolio_page_link(get_the_ID());
+        //     if(!empty($options['main-portfolio-link'])) $portfolio_link = $options['main-portfolio-link'];
+        //
+        //     if($back_to_all_override != 'default') $portfolio_link = get_page_link($back_to_all_override);
+        //
+        //
+        // }
+    ?>
 
-							<?php
-							$options = get_option('salient');
-
-							$back_to_all_override = get_post_meta($post->ID, 'nectar-metabox-portfolio-parent-override', true);
-							if(empty($back_to_all_override)) $back_to_all_override = 'default';
-
-							//attempt to find parent portfolio page - if unsuccessful default to main portfolio page
-							global $post;
-							$terms = get_the_terms($post->id,"project-type");
-							$project_cat = null;
-							$portfolio_link = null;
-
-						    if(empty($terms)) $terms = array('1' => (object) array('name' => 'nothing'));
-
-					     	 foreach ( $terms as $term ) {
-					      	 	$project_cat = strtolower($term->name);
-					     	 }
-
-							 $page = get_page_by_title_search($project_cat);
-							 if(empty($page)) $page = array( '0' => (object) array('ID' => 'nothing'));
-
-							 $page_link = verify_portfolio_page($page[0]->ID);
-
-							 //if a page has been found for the category
-							 if(!empty($page_link) && $back_to_all_override == 'default') {
-							 	$portfolio_link = $page_link;
-
-							 ?>
-
-								 <div id="portfolio-nav">
-								 	<ul>
-								 		<li id="all-items"><a href="<?php echo $portfolio_link; ?>"><i class="icon-salient-back-to-all"></i></a></li>
-								 	</ul>
-									<ul class="controls">
-										<li id="prev-link"><?php be_next_post_link('%link','<i class="icon-salient-left-arrow-thin"></i>',TRUE, null,'project-type'); ?></li>
-										<li id="next-link"><?php be_previous_post_link('%link','<i class="icon-salient-right-arrow-thin"></i>',TRUE, null, 'project-type'); ?></li>
-									</ul>
-								</div>
-
-						<?php  }
-
-							 //if no category page exists
-							 else {
-
-							 	$portfolio_link = get_portfolio_page_link(get_the_ID());
-								if(!empty($options['main-portfolio-link'])) $portfolio_link = $options['main-portfolio-link'];
-
-								if($back_to_all_override != 'default') $portfolio_link = get_page_link($back_to_all_override);
-
-
-								?>
-								<div id="portfolio-nav">
-									<ul>
-										<li id="all-items"><a href="<?php echo $portfolio_link; ?>"><i class="icon-salient-back-to-all"></i></a></li>
-									</ul>
-
-									<ul class="controls">
-										<?php
-										if(!empty($options['portfolio_same_category_single_nav']) && $options['portfolio_same_category_single_nav'] == '1') {
-
-											// get_posts in same custom taxonomy
-											$terms = get_the_terms($post->id,"project-type");
-											$project_cat = null;
-
-										    if(empty($terms)) $terms = array('1' => (object) array('name' => 'nothing'));
-
-									     	foreach ( $terms as $term ) {
-									      	 	$project_cat = strtolower($term->name);
-									     	}
-
-											$postlist_args = array(
-											   'posts_per_page'  => -1,
-											   'orderby'         => 'menu_order title',
-											   'order'           => 'ASC',
-											   'post_type'       => 'portfolio',
-											   'project-type' => $project_cat
-											);
-											$postlist = get_posts( $postlist_args );
-
-											// get ids of posts retrieved from get_posts
-											$ids = array();
-											foreach ($postlist as $thepost) {
-											   $ids[] = $thepost->ID;
-											}
-
-											// get and echo previous and next post in the same taxonomy
-											$thisindex = array_search($post->ID, $ids);
-
-											$previd = (isset($ids[$thisindex-1])) ? $ids[$thisindex-1] : null;
-											$nextid = (isset($ids[$thisindex+1])) ? $ids[$thisindex+1] : null;
-											if ( !empty($previd) ) {
-											   echo '<li id="prev-link" class="from-sing"><a href="' . get_permalink($previd). '"><i class="icon-salient-left-arrow-thin"></i></a></li>';
-											}
-											if ( !empty($nextid) ) {
-											   echo '<li id="next-link" class="from-sing"><a href="' . get_permalink($nextid). '"><i class="icon-salient-right-arrow-thin"></i></a></li>';
-											}
-
-
-										} else { ?>
-											<li id="prev-link"><?php next_post_link('%link','<i class="icon-salient-left-arrow-thin"></i>'); ?></li>
-											<li id="next-link"><?php previous_post_link('%link','<i class="icon-salient-right-arrow-thin"></i>'); ?></li>
-										<?php } ?>
-									</ul>
-								</div>
-						 <?php } ?>
-
-						</div>
-					</div>
-				</div>
-
-			</div><!--/row-->
-
-		<?php } //project header ?>
 
 	<div class="container-wrap">
 
 		<div class="container main-content">
 
-			<?php
+            <!-- Mobile portfolio navigation + title -->
+            <div class="rowm no-gutter hidden-md hidden-lg portfolio-nav--mobile" id="portfolio-nav">
+                <div class="col-xs-4 portfolio-nav--prev">
+                    <?php next_post_link('%link', '<i class="icon-salient-left-arrow-thin"></i>', true, '', 'project-type'); ?>
+                </div>
+                <div class="col-xs-4 portfolio-nav--all-items" id="all-items">
+                    <a href="<?php echo $portfolio_link; ?>"><i class="icon-salient-back-to-all"></i></a>
+                </div>
+                <div class="col-xs-4 portfolio-nav--next">
+                    <?php previous_post_link('%link', '<i class="icon-salient-right-arrow-thin"></i>', true, '', 'project-type'); ?>
+                </div>
+            </div>
+            <div class="row no-gutter hidden-md hidden-lg">
+                <div class="col portfolio--title">
+                    <h1><?php the_title(); ?></h1>
+                </div>
+            </div>
 
-			$enable_gallery_slider = get_post_meta( get_the_ID(), '_nectar_gallery_slider', true ); ?>
+
+            <!-- Desktop portfolio navigation + title -->
+            <div class="row no-gutter hidden-xs hidden-sm portfolio-nav--desktop" id="portfolio-nav">
+                <div class="col-md-4 portfolio-nav--all-items">
+                    <a href="<?php echo $portfolio_link; ?>"><i class="icon-salient-back-to-all"></i></a>
+                </div>
+                <div class="col-md-4 portfolio--title" id="all-items">
+                    <span><?php the_title(); ?></span>
+                </div>
+                <div class="col-md-4 portfolio-nav--prev-next">
+                    <?php next_post_link('%link', '<i class="icon-salient-left-arrow-thin"></i>', true, '', 'project-type'); ?>
+                    <?php previous_post_link('%link', '<i class="icon-salient-right-arrow-thin"></i>', true, '', 'project-type'); ?>
+                </div>
+            </div>
+
+
+			<?php
+		         $enable_gallery_slider = get_post_meta( get_the_ID(), '_nectar_gallery_slider', true );
+             ?>
+
+             <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
+
+            <div class="row <?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
+                <div class="hidden-xs col-sm-1 col-md-2">
+                </div>
+                <div class="col-sm-4 col-md-2 portfolio--item-subtitle">
+                    <?php echo get_post_meta($post->ID, '_nectar_portfolio_item_subtitle', true); ?>
+                </div>
+                <div class="col-sm-6 col-md-6 portfolio--item-description">
+                    <?php echo get_post_meta($post->ID, '_nectar_project_excerpt', true); ?>
+                </div>
+                <div class="hidden-xs col-sm-1 col-md-2">
+                </div>
+            </div>
 
 			<div class="row <?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
-
-				<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-
-                        <div class="col-md-2 col-xs-3">
-                        </div>
-                        <div class="col-md-2 hidden-sm hidden-xs">
-                            <?php echo get_post_meta($post->ID, '_nectar_portfolio_item_subtitle', true); ?>
-                        </div>
-                        <div class="col-md-6 home--section-excerpt">
-                            <?php echo get_post_meta($post->ID, '_nectar_project_excerpt', true); ?>
-                        </div>
-                        <div class="col-md-2">
-                        </div>
-
 
 					<div id="post-area" class="col <?php if($fwp != 'enabled') { echo 'span_9'; } else { echo 'span_12'; } ?>">
 

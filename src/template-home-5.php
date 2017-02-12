@@ -278,6 +278,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
           </div>
           <div class="col-md-6 home--section-excerpt">
               <?php the_excerpt(); ?>
+              <a href="#" class="collapsible-more-link">More</a>
           </div>
           <div class="col-md-2">
           </div>
@@ -285,77 +286,80 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
        <?php wp_reset_postdata(); ?>
 
-
-
        <!-- Capabilities -->
-       <!-- <div class="row home--section-header">
-           <div class="col-xs-4">&nbsp;</div>
-           <div class="col-xs-4">
-               <hr>
+       <div class="row col collapsible-container collapse">
+           <div class="row home--section-hr">
+               <div class="col-xs-4 col-md-5"></div>
+               <div class="col-xs-4 col-md-2">
+                   <hr>
+               </div>
+               <div class="col-xs-4 col-md-5"></div>
            </div>
-           <div class="col-xs-4">&nbsp;</div>
-       </div> -->
 
-       <!-- Capabilities title -->
-       <!-- <div class="row home--section-header">
-           <div class="col-md-5">&nbsp;</div>
-           <div class="col-md-2">
-               <h2>Capabilities</h2>
+           <!-- Capabilities title -->
+           <div class="row home--section-header">
+               <div class="col-md-5">&nbsp;</div>
+               <div class="col-md-2">
+                   <h2>Capabilities</h2>
+               </div>
+               <div class="col-md-5">&nbsp;</div>
            </div>
-           <div class="col-md-5">&nbsp;</div>
-       </div> -->
 
-       <!-- Capabilities content / excerpt -->
-      <!-- <div class="row">
-          <div class="col-xs-2">
-              &nbsp;
+           <!-- Capabilities content / excerpt -->
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-2"></div>
+              <div class="col-xs-12 col-sm-12 col-md-3">
+                  <ul class="capabilities-list">
+                      <li class="capabilities-header">Research</li>
+                      <li>Consumer Insights<li>
+                      <li>Internal Insights<li>
+                      <li>Trends &amp; Culture<li>
+                      <li>Planning<li>
+                      <li>Story Gathering<li>
+                      <li>Segmentation<li>
+                      <li>Psychographics<li>
+                      <li>Brand Audit<li>
+                      <li>Market Testing<li>
+                  </ul>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3">
+                  <ul class="capabilities-list">
+                      <li class="capabilities-header">Strategy</li>
+                      <li>Brand Implications<li>
+                      <li>Territory ID<li>
+                      <li>Brand Innovation<li>
+                      <li>Naming<li>
+                      <li>Messaging &amp; Copy<li>
+                      <li>Campaign Planning<li>
+                      <li>Creative Concepting<li>
+                      <li>Bid &amp; Grant Writing<li>
+                      <li>Workshops<li>
+                  </ul>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-3">
+                  <ul class="capabilities-list">
+                      <li class="capabilities-header">Creative</li>
+                      <li>Branding & Identity<li>
+                      <li>Advertising<li>
+                      <li>Infographics<li>
+                      <li>Packaging<li>
+                      <li>Film & Photography<li>
+                      <li>Web & Digital<li>
+                      <li>Environmental Graphics<li>
+                      <li>Exhibits<li>
+                      <li>Reports & Proposals<li>
+                  </ul>
+              </div>
+             <div class="col-xs-12 col-sm-12 col-md-1"></div>
           </div>
-          <div class="col-xs-3">
-              <ul class="capabilities-list">
-                  <li class="capabilities-header">Research</li>
-                  <li>Consumer Insights<li>
-                  <li>Internal Insights<li>
-                  <li>Trends &amp; Culture<li>
-                  <li>Planning<li>
-                  <li>Story Gathering<li>
-                  <li>Segmentation<li>
-                  <li>Psychographics<li>
-                  <li>Brand Audit<li>
-                  <li>Market Testing<li>
-              </ul>
-          </div>
-          <div class="col-xs-3">
-              <ul class="capabilities-list">
-                  <li class="capabilities-header">Strategy</li>
-                  <li>Brand Implications<li>
-                  <li>Territory ID<li>
-                  <li>Brand Innovation<li>
-                  <li>Naming<li>
-                  <li>Messaging &amp; Copy<li>
-                  <li>Campaign Planning<li>
-                  <li>Creative Concepting<li>
-                  <li>Bid &amp; Grant Writing<li>
-                  <li>Workshops<li>
-              </ul>
-          </div>
-          <div class="col-xs-3">
-              <ul class="capabilities-list">
-                  <li class="capabilities-header">Creative</li>
-                  <li>Branding & Identity<li>
-                  <li>Advertising<li>
-                  <li>Infographics<li>
-                  <li>Packaging<li>
-                  <li>Film & Photography<li>
-                  <li>Web & Digital<li>
-                  <li>Environmental Graphics<li>
-                  <li>Exhibits<li>
-                  <li>Reports & Proposals<li>
-              </ul>
-          </div>
-          <div class="col-xs-1">
-              &nbsp;
-          </div>
-      </div> -->
+      </div>
+      <script type="text/javascript">
+          jQuery('.collapsible-more-link').click(function($event){
+              $event.preventDefault();
+              jQuery('.collapsible-container').slideToggle('slow');
+              jQuery('.collapsible-more-link').slideToggle('slow');
+          });
+      </script>
 
    </div><!-- /About content -->
 
