@@ -21,7 +21,6 @@
 .home--section-lead-in {
     padding: 72px 10px 42px 10px;
     font-size: 48px;
-    font-family: 'Serif';
     line-height: 110%;
     text-align: center;
 }
@@ -34,7 +33,6 @@
     .home--section-lead-in {
         padding: 27px 27px 27px 27px;
         font-size: 32px;
-        font-family: 'Serif';
         line-height: 125%;
         text-align: center;
     }
@@ -49,6 +47,7 @@
     text-align: center;
     padding-bottom: 32px;
     h2 {
+        font-family: 'Source Sans Pro', sans-serif;
         text-transform: uppercase;
         font-size: 16px;
         font-weight: bold;
@@ -67,7 +66,6 @@
 .home--section-excerpt {
     font-size: 28px;
     line-height: 38px;
-    font-family: 'Serif';
 
     p:last-child {
         padding-bottom: 0;
@@ -127,23 +125,21 @@ div.portfolio-grid-thumbnail:hover {
 
 
 ul.capabilities-list {
-    font-family: Serif;
-    font-size: 22px;
+    font-size: 24px;
+    line-height: 34px;
 }
 
 li.capabilities-header {
     font-weight: bold;
-    font-family: Serif;
 }
 
-@media (max-width: 690px) {
+@media (max-width: 767px) {
     ul.capabilities-list {
         text-align: center;
     }
 }
 
 .home--article {
-    font-family: Serif;
 
     .article-title {
         font-weight: bold;
@@ -152,7 +148,6 @@ li.capabilities-header {
 
     .article-excerpt {
         font-size: 18px;
-        font-family: Crimson Text;
     }
 
     .article-source {

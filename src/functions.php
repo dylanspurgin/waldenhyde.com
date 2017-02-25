@@ -1,4 +1,16 @@
 <?php
+
+    /* Disable WordPress Admin Bar */
+    // show_admin_bar(false); // hide for everyone
+    add_action('after_setup_theme', 'remove_admin_bar');
+    function remove_admin_bar() {
+        $current_user = wp_get_current_user();
+        if ($current_user->user_login=='dylanspurgin') {
+            show_admin_bar(false);
+        }
+    }
+
+
     function my_theme_enqueue_styles() {
 
         $parent_style = 'parent-style';

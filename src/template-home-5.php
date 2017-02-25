@@ -307,8 +307,8 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
            <!-- Capabilities content / excerpt -->
           <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-2"></div>
-              <div class="col-xs-12 col-sm-12 col-md-3">
+              <div class="col-xs-12 col-sm-2 col-md-2"></div>
+              <div class="col-xs-12 col-sm-3 col-md-3">
                   <ul class="capabilities-list">
                       <li class="capabilities-header">Research</li>
                       <li>Consumer Insights<li>
@@ -322,7 +322,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                       <li>Market Testing<li>
                   </ul>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-3">
+              <div class="col-xs-12 col-sm-3 col-md-3">
                   <ul class="capabilities-list">
                       <li class="capabilities-header">Strategy</li>
                       <li>Brand Implications<li>
@@ -336,7 +336,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                       <li>Workshops<li>
                   </ul>
               </div>
-              <div class="col-xs-12 col-sm-12 col-md-3">
+              <div class="col-xs-12 col-sm-3 col-md-3">
                   <ul class="capabilities-list">
                       <li class="capabilities-header">Creative</li>
                       <li>Branding & Identity<li>
@@ -350,7 +350,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                       <li>Reports & Proposals<li>
                   </ul>
               </div>
-             <div class="col-xs-12 col-sm-12 col-md-1"></div>
+             <div class="col-xs-12 col-sm-1 col-md-1"></div>
           </div>
       </div>
       <script type="text/javascript">
@@ -414,29 +414,32 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
            // Get the Articles posts
            $args = array(
                'posts_per_page' => '-1',
+               'numberposts' => '4',
                'post_type' => 'post',
                'category_name'=> 'homepage article',
                'paged'=> false
            );
-        //    $wp_query = new WP_Query($articles);
-           $articles = get_posts($args);
+           $posts = get_posts($args);
        ?>
 
-       <?php foreach ($articles as $index => $article) { ?>
+       <?php foreach ($posts as $post) { ?>
        <div class="row home--article">
 
            <div class="col-xs-1 col-md-3"></div>
            <div class="col-xs-10 col-md-6">
                <h2 class="article-title">
-                   <?php echo $article->post_title ?>
+                   <?php echo $post->post_title ?>
                </h2>
+               <div class="article-image">
+                   <img src="<?php the_post_thumbnail_url(); ?>" width="100%">
+               </div>
                <p class="article-excerpt">
-                   <?php echo $article->post_excerpt ?>
+                   <?php echo $post->post_excerpt ?>
                </p>
                <div class="article-source">
-                   <?php echo get_post_custom_values('source', $article->ID)[0];?>
+                   <?php echo get_post_custom_values('source', $post->ID)[0];?>
                </div>
-               <a class="read-link" href="<?php echo get_post_meta($article->ID, '_nectar_link', true); ?>"><strong>READ</strong></a>
+               <a class="read-link" href="<?php echo get_post_meta($post->ID, '_nectar_link', true); ?>" target="_blank"><strong>READ</strong></a>
                <br >
                <hr >
            </div>

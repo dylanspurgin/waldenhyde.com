@@ -40,6 +40,17 @@ module.exports = {
     }
   },
 
+  fonts: {
+    build: { // Copies fonts from `src` to `build`; does not optimize
+      src: src+'**/*(*.otf|*.wtf)',
+      dest: build
+    },
+    dist: {
+      src: [dist+'**/*(*.otf|*.wtf)'],
+      dest: dist
+    }
+  },
+
   livereload: {
     port: 35729 // This is a standard port number that should be recognized by your LiveReload helper; there's probably no need to change it
   },

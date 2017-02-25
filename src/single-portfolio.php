@@ -230,6 +230,29 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
 							}
 
 
+                            // Other work item thumbnails
+                            echo '<div class="portfolio--recent-work">';
+                            echo '<h5 class="portfolio--recent-work-title">Recent work</h5>';
+                            echo '<p>';
+
+                            // wp_reset_postdata();
+                			$other_work_query = array(
+                                'post_type' => $post->post_type,
+                                'project-type'=> ['home page grid'],
+                                'posts_per_page' => 3,
+                                'orderby' => 'date',
+                                'order' => 'DESC',
+                                'post__not_in' => array($post->ID)
+                			);
+
+                			$wp_query2 = new WP_Query($other_work_query);
+
+                            while ( $wp_query2->have_posts() ) {
+                                $wp_query2->the_post();
+                                echo '<a href="'.post_permalink( $wp_query2->post->ID ).'"><img src="'.get_the_post_thumbnail_url( $wp_query2->post->ID, array(150, 150) ).'"></a>';
+                            }
+
+                            echo '</p></div>';
 
 				        $theme_skin = (!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend') ? 'ascend' : 'default';
 

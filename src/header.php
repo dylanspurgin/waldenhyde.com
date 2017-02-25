@@ -283,11 +283,11 @@ if($using_secondary == 'header_with_secondary') { ?>
 
 				    wp_nav_menu( array('theme_location' => 'top_nav', 'menu' => 'Top Navigation Menu', 'container' => '', 'items_wrap' => '%3$s' ) );
 
-					echo '<li id="mobile-search">
-					<form action="'.home_url().'" method="GET">
-			      		<input type="text" name="s" value="" placeholder="'.__('Search..', NECTAR_THEME_NAME) .'" />
-					</form>
-					</li>';
+					// echo '<li id="mobile-search">
+					// <form action="'.home_url().'" method="GET">
+                    // pe="text" name="s" value="" placeholder="'.__('Search..', NECTAR_THEME_NAME) .'" />
+					// </form>
+					// </li>';
 				}
 				else {
 					echo '<li><a href="">No menu assigned!</a></li>';

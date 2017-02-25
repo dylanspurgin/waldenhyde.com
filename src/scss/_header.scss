@@ -2,22 +2,3 @@
     box-shadow: none;
     -webkit-box-shadow: none;
 }
-
-header#top nav > ul {
-    float: right;
-}
-
-header#top nav > ul > li.menu-item > a {
-    font-size: 14px;
-    letter-spacing: 2.5px;
-    font-weight: bold;
-    color: black !important;
-    text-transform: uppercase;
-
-    &:hover {
-    }
-}
-
-header#top #toggle-nav i {
-    font-size: 28px !important;
-}

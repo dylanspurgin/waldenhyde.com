@@ -27,10 +27,12 @@ Text Domain: #{metadata(theme-text-domain)}
 Domain Path: #{metadata(theme-text-domain-path)}
 */
 
+@import "font";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
 
 @import "theme-overrides";
 @import "bootstrap-customizations";
 @import "header";
+@import "menu";
 @import "home";
 @import "portfolio";

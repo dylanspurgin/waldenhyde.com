@@ -1,0 +1,33 @@
+header#top nav > ul {
+    float: right;
+}
+
+header#top nav > ul > li.menu-item > a {
+    font-family: Source Sans Pro, sans-serif;
+    font-size: 14px;
+    letter-spacing: 2.5px;
+    font-weight: bold;
+    color: black !important;
+    text-transform: uppercase;
+
+    &:hover {
+    }
+}
+
+header#top #toggle-nav i {
+    font-size: 28px !important;
+}
+
+
+#mobile-menu ul li.menu-item a {
+    font-family: Source Sans Pro, sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#mobile-menu ul li:last-child {
+    a {
+        border-bottom: none;
+    }
+}
