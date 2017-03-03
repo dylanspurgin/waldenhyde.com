@@ -1,3 +1,11 @@
+@mixin serif () {
+  font-family: 'Tiempos Text Regular', 'Crimson Text', serif;
+}
+
+@mixin sans-serif () {
+  font-family: 'Gotham HTF Book', 'Source Sans Pro', sans-serif;
+}
+
 @font-face {
     font-family: Tiempos Text Bold;
     src: url(/wp-content/themes/salient-child-2/fonts/TiemposText-Bold.otf);
@@ -19,5 +27,32 @@
 @font-face {
     font-family: Tiempos Text Regular Italic;
     src: url(/wp-content/themes/salient-child-2/fonts/TiemposText-RegularItalic.otf);
+    font-weight: normal;
+}
+
+
+
+
+@font-face {
+    font-family: Gotham HTF Bold;
+    src: url(/wp-content/themes/salient-child-2/fonts/GothamHTF-Bold.otf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Gotham HTF Book;
+    src: url(/wp-content/themes/salient-child-2/fonts/GothamHTF-Book.otf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Gotham HTF Light;
+    src: url(/wp-content/themes/salient-child-2/fonts/GothamHTF-Light.otf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Gotham HTF Medium;
+    src: url(/wp-content/themes/salient-child-2/fonts/GothamHTF-Medium.otf);
     font-weight: normal;
 }

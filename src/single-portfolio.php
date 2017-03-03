@@ -18,50 +18,36 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
 <div <?php echo $full_width_portfolio; if(!empty($bg) && $fwp != 'enabled' || !empty($bg_color) && $fwp != 'enabled') echo ' data-project-header-bg="true"'?> >
 
     <?php
+        $options = get_option('salient');
 
-        // TODO - Find the correct link back to all portfolio items
+        $back_to_all_override = get_post_meta($post->ID, 'nectar-metabox-portfolio-parent-override', true);
+        if (empty($back_to_all_override)) {
+            $back_to_all_override = 'default';
+        }
 
+        //attempt to find parent portfolio page - if unsuccessful default to main portfolio page
+        global $post;
+        $terms = get_the_terms($post->id, "project-type");
+        $project_cat = null;
         $portfolio_link = '/work'; // Default
+        $back_to_all_override = 'default';
 
-        // $options = get_option('salient');
-        //
-        // $back_to_all_override = get_post_meta($post->ID, 'nectar-metabox-portfolio-parent-override', true);
-        // if(empty($back_to_all_override)) $back_to_all_override = 'default';
-        //
-        // //attempt to find parent portfolio page - if unsuccessful default to main portfolio page
-        // global $post;
-        // $terms = get_the_terms($post->id,"project-type");
-        // $project_cat = null;
-        // $portfolio_link = null;
-        //
-        // if(empty($terms)) $terms = array('1' => (object) array('name' => 'nothing'));
-        //
-        //  foreach ( $terms as $term ) {
-        //     $project_cat = strtolower($term->name);
-        //  }
-        //
-        //  $page = get_page_by_title_search($project_cat);
-        //  if(empty($page)) $page = array( '0' => (object) array('ID' => 'nothing'));
-        //
-        //  $page_link = verify_portfolio_page($page[0]->ID);
-        //
-        //  //if a page has been found for the category
-        //  if(!empty($page_link) && $back_to_all_override == 'default') {
-        //     $portfolio_link = $page_link;
-        //
-        //
-        //  }
-        //
-        //  //if no category page exists
-        //  else {
-        //
-        //     $portfolio_link = get_portfolio_page_link(get_the_ID());
-        //     if(!empty($options['main-portfolio-link'])) $portfolio_link = $options['main-portfolio-link'];
-        //
-        //     if($back_to_all_override != 'default') $portfolio_link = get_page_link($back_to_all_override);
-        //
-        //
-        // }
+        if(empty($terms)) $terms = array('1' => (object) array('name' => 'nothing'));
+
+        foreach ( $terms as $term ) {
+            $project_cat = strtolower($term->name);
+        }
+
+        $parent_page = get_page_by_title($project_cat);
+        if (empty($parent_page)) {
+            $parent_page = array( '0' => (object) array('ID' => 'nothing'));
+        }
+        $page_link = get_permalink($parent_page->ID);
+
+        //if a page has been found for the category
+        if(!empty($page_link) && $back_to_all_override == 'default') {
+            $portfolio_link = $page_link;
+        }
     ?>
 
 
@@ -82,8 +68,8 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
                 </div>
             </div>
             <div class="row no-gutter hidden-md hidden-lg">
-                <div class="col portfolio--title">
-                    <h1><?php the_title(); ?></h1>
+                <div class="col">
+                    <div class="portfolio--title--mobile"><?php the_title(); ?></div>
                 </div>
             </div>
 
@@ -231,28 +217,32 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
 
 
                             // Other work item thumbnails
-                            echo '<div class="portfolio--recent-work">';
-                            echo '<h5 class="portfolio--recent-work-title">Recent work</h5>';
-                            echo '<p>';
+                            if ($project_cat=='work') {
+                                echo '<div class="portfolio--recent-work">';
+                                echo '<div class="portfolio--recent-work--image-mock">';
+                                echo '<div class="portfolio--recent-work--container">';
+                                echo '<h4 class="portfolio--recent-work-title">See More Work</h4>';
+                                echo '<p>';
 
-                            // wp_reset_postdata();
-                			$other_work_query = array(
-                                'post_type' => $post->post_type,
-                                'project-type'=> ['home page grid'],
-                                'posts_per_page' => 3,
-                                'orderby' => 'date',
-                                'order' => 'DESC',
-                                'post__not_in' => array($post->ID)
-                			);
+                                // wp_reset_postdata();
+                    			$other_work_query = array(
+                                    'post_type' => $post->post_type,
+                                    'project-type'=> ['home page grid'],
+                                    'posts_per_page' => 3,
+                                    'orderby' => 'date',
+                                    'order' => 'DESC',
+                                    'post__not_in' => array($post->ID)
+                    			);
 
-                			$wp_query2 = new WP_Query($other_work_query);
+                    			$wp_query2 = new WP_Query($other_work_query);
 
-                            while ( $wp_query2->have_posts() ) {
-                                $wp_query2->the_post();
-                                echo '<a href="'.post_permalink( $wp_query2->post->ID ).'"><img src="'.get_the_post_thumbnail_url( $wp_query2->post->ID, array(150, 150) ).'"></a>';
+                                while ( $wp_query2->have_posts() ) {
+                                    $wp_query2->the_post();
+                                    echo '<a href="'.post_permalink( $wp_query2->post->ID ).'" class="portfolio--recent-work-thumbnail" style="background-image: url(\''.get_the_post_thumbnail_url( $wp_query2->post->ID, array(180, 180) ).'\')"></a>';
+                                }
+
+                                echo '</p></div></div></div>';
                             }
-
-                            echo '</p></div>';
 
 				        $theme_skin = (!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend') ? 'ascend' : 'default';
 
