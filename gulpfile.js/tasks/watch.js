@@ -26,4 +26,4 @@ gulp.task('watch-livereload', ['livereload'], function() {
 });
 
 // Master control switch for the watch task
-gulp.task('watch', ['link-theme', 'watch-'+config.watcher]);
+gulp.task('watch', ['watch-'+config.watcher]);

@@ -7,10 +7,22 @@
 //$width-left:    650px;
 //$width-right:   350px;
 
-// Breakpoints
-//$break-small:   480px;
-//$break-medium:  620px;
-//$break-large:   800px;
+// Breakpoints (TODO - figure out if these are still used)
+// $break-small:   480px;
+// $break-medium:  620px;
+// $break-large:   800px;
+
+// Bootstrap Breakpoints
+// xs = 0 - 767px
+// sm = 768 - 991px
+// md = 992 - 1199px
+// lg = 1200 & >
+$screen-sm-min: 768px;
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-md-min: 992px;
+$screen-sm-max: ($screen-md-min - 1);
+$screen-lg-min: 1200px;
+$screen-md-max: ($screen-lg-min - 1);
 
 // A standard margin
 //$spacer:        30px;
