@@ -1,14 +1,15 @@
 // ==== CONFIGURATION ==== //
 
 // Project paths
-var project     = 'voidx',                // The directory name for your theme; change this at the very least!
-    src         = './src/',               // The raw material of your theme: custom scripts, SCSS source files, PHP files, images, etc.; do not delete this folder!
-    build       = './build/',             // A temporary directory containing a development version of your theme; delete it anytime
-    dist        = './dist/'+project+'/',  // The distribution package that you'll be uploading to your server; delete it anytime
-    assets      = './assets/',            // A staging area for assets that require processing before landing in the source folder (example: icons before being added to a sprite sheet)
-    bower       = './bower_components/',  // Bower packages
-    composer    = './vendor/',            // Composer packages
-    modules     = './node_modules/';      // npm packages
+var project     = 'waldenhyde.com',                   // The directory name for your theme; change this at the very least!
+    src         = './src/',                           // The raw material of your theme: custom scripts, SCSS source files, PHP files, images, etc.; do not delete this folder!
+    build       = './build/',                         // A temporary directory containing a development version of your theme; delete it anytime
+    dist        = './dist/'+project+'/',              // The distribution package that you'll be uploading to your server; delete it anytime
+    assets      = './assets/',                        // A staging area for assets that require processing before landing in the source folder (example: icons before being added to a sprite sheet)
+    bower       = './bower_components/',              // Bower packages
+    composer    = './vendor/',                        // Composer packages
+    modules     = './node_modules/',                  // npm packages
+    wordpress   = './wordpress';           // WordPress installation
 
 // Project settings
 module.exports = {
@@ -144,6 +145,8 @@ module.exports = {
   },
 
   utils: {
+    build: build, // Export build location for use by link-theme task
+    project: project, // Export project name for use by link-theme task
     clean: [build+'**/.DS_Store'], // A glob pattern matching junk files to clean out of `build`; feel free to add to this array
     wipe: [dist], // Clean this out before creating a new distribution copy
     dist: {
@@ -161,5 +164,7 @@ module.exports = {
       livereload:   build+'**/*'
     },
     watcher: 'livereload' // Modify this value to easily switch between BrowserSync ('browsersync') and Livereload ('livereload')
-  }
+  },
+
+  wordpress: wordpress
 }
