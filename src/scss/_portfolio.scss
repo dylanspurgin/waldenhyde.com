@@ -19,14 +19,18 @@
     .portfolio-nav--prev {
         text-align: left;
     }
-
     .portfolio-nav--all-items {
         text-align: center;
     }
-
     .portfolio-nav--next {
         text-align: right;
     }
+}
+.portfolio--title--mobile {
+    text-align: center;
+    text-transform: uppercase;
+    @include sans-serif;
+    font-size: 30px !important;
 }
 
 #portfolio-nav.portfolio-nav--desktop {
@@ -38,7 +42,7 @@
     }
 
     .portfolio--title {
-        font-size: 36px;
+        font-size: 32px;
     }
 
     .portfolio-nav--prev-next {
@@ -49,7 +53,7 @@
 .portfolio--title {
     text-align: center;
     text-transform: uppercase;
-    font-family: 'Source Sans Pro', sans-serif;
+    @include sans-serif;
 }
 
 .portfolio--item-subtitle {
@@ -59,13 +63,61 @@
     font-style: italic;
     margin-bottom: 8px; // Space below when stacked above description
 }
+@media (max-width: $mobile-max-width) {
+    .portfolio--item-subtitle {
+        font-size: 24px;
+    }
+}
 
 .portfolio--item-description {
     font-size: 22px;
     line-height: 24px;
 }
+@media (max-width: $mobile-max-width) {
+    .portfolio--item-description {
+        font-size: 18px;
+        line-height: 20px;
+    }
+}
 
 .portfolio--recent-work {
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.portfolio--recent-work--image-mock {
+    // Container to match the sizing of the portfolio images
+    width: 100%;
     max-width:1155px; // Max-width of portfolio images;
-    text-align: right;
+    position: relative;
+    margin: 0 auto;
+}
+
+.portfolio--recent-work--container {
+    float: right;
+    text-align: left;
+}
+
+.portfolio--recent-work-title {
+    font-weight: bold;
+}
+
+a.portfolio--recent-work-thumbnail {
+    display: inline-block;
+    width: 180px;
+    height: 180px;
+    background-size: cover;
+    margin-right: 4px;
+}
+
+a.portfolio--recent-work-thumbnail:last-of-type {
+    margin-right: 0;
+}
+
+@media (max-width: 999px) {
+    a.portfolio--recent-work-thumbnail {
+        width: 80px;
+        height: 80px;
+    }
 }

@@ -30,6 +30,7 @@ Domain Path: #{metadata(theme-text-domain-path)}
 @import "font";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "breakpoints";
 @import "theme-overrides";
 @import "bootstrap-customizations";
 @import "header";

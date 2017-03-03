@@ -3,7 +3,7 @@ header#top nav > ul {
 }
 
 header#top nav > ul > li.menu-item > a {
-    font-family: Source Sans Pro, sans-serif;
+    @include sans-serif;
     font-size: 14px;
     letter-spacing: 2.5px;
     font-weight: bold;
@@ -20,7 +20,7 @@ header#top #toggle-nav i {
 
 
 #mobile-menu ul li.menu-item a {
-    font-family: Source Sans Pro, sans-serif;
+    @include sans-serif;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 16px;
