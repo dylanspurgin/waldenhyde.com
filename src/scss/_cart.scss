@@ -1,0 +1,21 @@
+.cart-outer {
+    @include sans-serif;
+
+    // Replace salient 'lock' icon with an actual shopping cart icon
+    i.icon-salient-cart {
+        &:before {
+            content: none !important;
+        }
+        @include font-awesome($icon-shopping-cart);
+    }
+}
+
+// Clean up whitespace on top and bottom of shopping cart menu
+.widget.woocommerce.widget_shopping_cart {
+    h2 {
+        display: none;
+    }
+    p.buttons {
+        margin-bottom: 0;
+    }
+}

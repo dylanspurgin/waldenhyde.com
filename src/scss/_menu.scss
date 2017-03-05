@@ -14,10 +14,17 @@ header#top nav > ul > li.menu-item > a {
     }
 }
 
+header#top #mobile-cart-link {
+    text-align: left;
+
+    i {
+        font-size: 28px !important;
+    }
+}
+
 header#top #toggle-nav i {
     font-size: 28px !important;
 }
-
 
 #mobile-menu ul li.menu-item a {
     @include sans-serif;

@@ -27,6 +27,7 @@ Text Domain: #{metadata(theme-text-domain)}
 Domain Path: #{metadata(theme-text-domain-path)}
 */
 
+@import "font-awesome-mixins";
 @import "font";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -35,5 +36,6 @@ Domain Path: #{metadata(theme-text-domain-path)}
 @import "bootstrap-customizations";
 @import "header";
 @import "menu";
+@import "cart";
 @import "home";
 @import "portfolio";

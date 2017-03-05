@@ -191,7 +191,7 @@ if($using_secondary == 'header_with_secondary') { ?>
 					if (!empty($options['enable-cart']) && $options['enable-cart'] == '1') {
 						if ($woocommerce) { ?>
 							<!--mobile cart link-->
-							<a id="mobile-cart-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><i class="icon-salient-cart"></i></a>
+							<a id="mobile-cart-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><i class="fa fa-shopping-cart fa-2x"></i></a>
 						<?php }
 					}
 
@@ -225,49 +225,51 @@ if($using_secondary == 'header_with_secondary') { ?>
 					</nav>
 
 				</div><!--/span_8-->
-                <div class="col span_1">&nbsp;</div>
+                <div class="col span_1">
+
+					<?php if (!empty($options['enable-cart']) && $options['enable-cart'] == '1') { ?>
+						<?php
+						if ($woocommerce) { ?>
+
+						<div class="cart-outer">
+							<div class="cart-menu-wrap">
+								<div class="cart-menu" style="width:64px;">
+									<a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><div class="cart-icon-wrap"><i class="fa fa-shopping-cart fa-lg"></i> <div class="cart-wrap"><span><?php echo $woocommerce->cart->cart_contents_count; ?> </span></div> </div></a>
+								</div>
+							</div>
+
+							<div class="cart-notification">
+								<span class="item-name"></span> <?php echo __('was successfully added to your cart.', NECTAR_THEME_NAME); ?>
+							</div>
+
+							<?php
+								// Check for WooCommerce 2.0 and display the cart widget
+								if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) >= 0 ) {
+									the_widget( 'WC_Widget_Cart', 'title= ' );
+								} else {
+									the_widget( 'WooCommerce_Widget_Cart', 'title= ' );
+								}
+							?>
+
+						</div>
+
+					 <?php }
+
+				   }
+
+
+				   echo '<div class="ns-loading-cover"></div>';
+
+				   ?>
+
+
+				</div>
 
 			</div><!--/row-->
 
 		</div><!--/container-->
 
 	</header>
-
-
-	<?php if (!empty($options['enable-cart']) && $options['enable-cart'] == '1') { ?>
-		<?php
-		if ($woocommerce) { ?>
-
-		<div class="cart-outer">
-			<div class="cart-menu-wrap">
-				<div class="cart-menu">
-					<a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><div class="cart-icon-wrap"><i class="icon-salient-cart"></i> <div class="cart-wrap"><span><?php echo $woocommerce->cart->cart_contents_count; ?> </span></div> </div></a>
-				</div>
-			</div>
-
-			<div class="cart-notification">
-				<span class="item-name"></span> <?php echo __('was successfully added to your cart.', NECTAR_THEME_NAME); ?>
-			</div>
-
-			<?php
-				// Check for WooCommerce 2.0 and display the cart widget
-				if ( version_compare( WOOCOMMERCE_VERSION, "2.0.0" ) >= 0 ) {
-					the_widget( 'WC_Widget_Cart', 'title= ' );
-				} else {
-					the_widget( 'WooCommerce_Widget_Cart', 'title= ' );
-				}
-			?>
-
-		</div>
-
-	 <?php }
-
-   }
-
-
-   echo '<div class="ns-loading-cover"></div>';
-
-   ?>
 
 
 </div><!--/header-outer-->
@@ -297,7 +299,6 @@ if($using_secondary == 'header_with_secondary') { ?>
 	</div>
 
 </div>
-
 
 <div id="ajax-loading-screen" data-method="<?php echo (!empty($options['transition-method'])) ? $options['transition-method'] : 'ajax' ; ?>"><span class="loading-icon <?php echo (!empty($options['loading-image-animation']) && !empty($options['loading-image'])) ? $options['loading-image-animation'] : null; ?>"> <?php if(empty($options['loading-image'])) { if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend') { echo '<span class="default-loading-icon spin"></span>'; } else { echo '<span class="default-skin-loading-icon"></span>'; } } ?> </span></div>
 <div id="ajax-content-wrap">
