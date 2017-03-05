@@ -7,6 +7,7 @@ var gulp        = require('gulp'),
 // Watch (BrowserSync version): build stuff when source files are modified, let BrowserSync figure out when to reload
 // Task chain: build -> browsersync -> watch
 gulp.task('watch-browsersync', ['browsersync'], function() {
+  gulp.watch(config.src.fonts, ['fonts']);
   gulp.watch(config.src.styles, ['styles']);
   gulp.watch(config.src.scripts, ['scripts']);
   gulp.watch(config.src.images, ['images']);
@@ -17,6 +18,7 @@ gulp.task('watch-browsersync', ['browsersync'], function() {
 // Task chain: build -> livereload -> watch
 gulp.task('watch-livereload', ['livereload'], function() {
   gulp.watch(config.src.styles, ['styles']);
+  gulp.watch(config.src.fonts, ['fonts']);
   gulp.watch(config.src.scripts, ['scripts']);
   gulp.watch(config.src.images, ['images']);
   gulp.watch(config.src.theme, ['theme']);
@@ -26,4 +28,4 @@ gulp.task('watch-livereload', ['livereload'], function() {
 });
 
 // Master control switch for the watch task
-gulp.task('watch', ['link-theme', 'watch-'+config.watcher]);
+gulp.task('watch', ['watch-'+config.watcher]);

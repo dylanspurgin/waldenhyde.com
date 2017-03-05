@@ -85,7 +85,6 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 <?php //echo nectar_page_header($post->ID); ?>
 
 <div class="home-page">
-
     <!-- Work -->
     <?php
         $the_slug = 'work';
@@ -216,10 +215,9 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
            $wp_query = new WP_Query($portfolio);
        ?>
        <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-           <div class="portfolio-grid-thumbnail fixed-ratio col-xs-4 col-sm-4 col-md-3 col-lg-2 no-gutter">
-               <a href="<?php echo $the_project_link; ?>"
-                   style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-           </div><!-- /portfolio-grid-thumbnail -->
+           <div class="homepage--client-logo fixed-ratio col-xs-4 col-sm-3 col-md-3 col-lg-2 no-gutter"
+		   	style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
+		</div><!-- / client logo -->
        <?php endwhile; endif; wp_reset_postdata(); ?>
    </div><!-- /Clients content -->
 
@@ -413,8 +411,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        <?php
            // Get the Articles posts
            $args = array(
-               'posts_per_page' => '-1',
-               'numberposts' => '4',
+               'numberposts' => 3,
                'post_type' => 'post',
                'category_name'=> 'homepage article',
                'paged'=> false
@@ -422,31 +419,30 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
            $posts = get_posts($args);
        ?>
 
-       <?php foreach ($posts as $post) { ?>
-       <div class="row home--article">
+			 <div class="row home--articles">
 
-           <div class="col-xs-1 col-md-3"></div>
-           <div class="col-xs-10 col-md-6">
+       <?php foreach ($posts as $post) {
+				 		     $link = get_post_meta($post->ID, '_nectar_link', true); ?>
+           <div class="home--article col-xs-12 col-sm-4">
+			   <div class="article-image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
+			   </div>
                <h2 class="article-title">
+							   <a class="read-link" href="<?php echo $link ?>" target="_blank">
                    <?php echo $post->post_title ?>
+								 </a>
                </h2>
-               <div class="article-image">
-                   <img src="<?php the_post_thumbnail_url(); ?>" width="100%">
-               </div>
                <p class="article-excerpt">
                    <?php echo $post->post_excerpt ?>
                </p>
                <div class="article-source">
                    <?php echo get_post_custom_values('source', $post->ID)[0];?>
                </div>
-               <a class="read-link" href="<?php echo get_post_meta($post->ID, '_nectar_link', true); ?>" target="_blank"><strong>READ</strong></a>
+               <a class="read-link" href="<?php echo $link ?>" target="_blank"><strong>READ</strong></a>
                <br >
-               <hr >
+			   <hr>
            </div>
-           <div class="col-xs-1 col-md-3"></div>
-
-       </div>
        <?php } wp_reset_postdata(); ?>
+			 </div>
    </div><!-- /Articles content -->
 
 
