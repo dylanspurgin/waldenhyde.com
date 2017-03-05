@@ -215,10 +215,9 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
            $wp_query = new WP_Query($portfolio);
        ?>
        <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-           <div class="portfolio-grid-thumbnail fixed-ratio col-xs-4 col-sm-3 col-md-3 col-lg-2 no-gutter">
-               <a href="<?php echo $the_project_link; ?>"
-                   style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-           </div><!-- /portfolio-grid-thumbnail -->
+           <div class="homepage--client-logo fixed-ratio col-xs-4 col-sm-3 col-md-3 col-lg-2 no-gutter"
+		   	style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
+		</div><!-- / client logo -->
        <?php endwhile; endif; wp_reset_postdata(); ?>
    </div><!-- /Clients content -->
 
@@ -412,7 +411,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        <?php
            // Get the Articles posts
            $args = array(
-               'numberposts' => 4,
+               'numberposts' => 3,
                'post_type' => 'post',
                'category_name'=> 'homepage article',
                'paged'=> false
@@ -424,7 +423,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
        <?php foreach ($posts as $post) {
 				 		     $link = get_post_meta($post->ID, '_nectar_link', true); ?>
-           <div class="home--article col-xs-12 col-sm-3">
+           <div class="home--article col-xs-12 col-sm-4">
 			   <div class="article-image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
 			   </div>
                <h2 class="article-title">
