@@ -11,40 +11,6 @@ body {
     background-color: white;
 }
 
-/* full width on all but xl screen sizes */
-@media only screen and (min-width: 1000px) {
-    div#boxed {
-        &, #header-outer, #boxed #header-secondary-outer, #boxed #page-header-bg[data-parallax="1"], #boxed #featured, #boxed .orbit > div, #boxed #featured article, .ascend #boxed #search-outer {
-            max-width: 1500px !important;
-        }
-    }
-}
-
-div#boxed {
-    width: 100% !important;
-    // max-width: 1500px !important;
-    div#header-outer {
-        width: 100% !important;
-    }
-}
-
-div#boxed {
-    box-shadow: none;
-    background-color: white;
-
-    #header-space, .container-fluid {
-        background-color: white;
-    }
-}
-
-
-@media (max-width: 690px) and (min-width: 480px) {
-    #boxed {
-        width: 98% !important;
-    }
-}
-
-
 #footer-outer {
     background-color: white;
 
