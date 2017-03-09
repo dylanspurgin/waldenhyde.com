@@ -32,6 +32,7 @@ Domain Path: #{metadata(theme-text-domain-path)}
 
 @import "breakpoints";
 @import "theme-overrides";
+// @import "boxed-overrides"; // Not currently using boxed layout
 @import "bootstrap-customizations";
 @import "header";
 @import "menu";
