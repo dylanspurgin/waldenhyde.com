@@ -419,11 +419,11 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
            $posts = get_posts($args);
        ?>
 
-			 <div class="row home--articles">
+			 <div class="row articles-grid">
 
        <?php foreach ($posts as $post) {
 				 		     $link = get_post_meta($post->ID, '_nectar_link', true); ?>
-           <div class="home--article col-xs-12 col-sm-4">
+           <div class="article-grid-item col-xs-12 col-sm-4">
 			   <div class="article-image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
 			   </div>
                <h2 class="article-title">

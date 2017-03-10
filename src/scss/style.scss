@@ -34,7 +34,13 @@ Domain Path: #{metadata(theme-text-domain-path)}
 @import "theme-overrides";
 // @import "boxed-overrides"; // Not currently using boxed layout
 @import "bootstrap-customizations";
+
+// Components
 @import "header";
 @import "menu";
+@import "pagination";
+
+// Pages
 @import "home";
 @import "portfolio";
+@import "articles";
