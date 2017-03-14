@@ -145,13 +145,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
             <div class="portfolio-grid-thumbnail fixed-ratio col-xs-6 col-sm-6 col-md-4 col-lg-4 no-gutter">
 				<a href="<?php echo get_page_link(); ?>"
                     class="portfolio-grid-thumbnail"
-                    style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
-
-                    <!-- <div class="work-meta">
-						<span class="title"><?php //the_title(); ?></span>
-					</div> -->
-
-				</a>
+                    style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
             </div><!--work-item-->
 
 		<?php endwhile; endif; ?>
@@ -175,7 +169,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        $header_title = get_post_meta($post->ID, '_nectar_header_title', true);
        $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
-   <div class="container-fluid no-gutter section-content">
+   <div class="container-fluid section-content">
 
        <!-- Clients Lead in -->
        <div class="row home--section-lead-in">
@@ -237,7 +231,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
    <!-- About content -->
-   <div class="container-fluid about-container no-gutter section-content">
+   <div class="container-fluid about-container section-content">
 
        <div id="about" ></div>
 
@@ -379,7 +373,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
    <!-- Articles content -->
-   <div class="container-fluid no-gutter section-content">
+   <div class="container-fluid section-content">
 
        <!-- Articles Lead in -->
        <div class="row home--section-lead-in">

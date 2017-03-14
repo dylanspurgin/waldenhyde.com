@@ -29,8 +29,8 @@
 .portfolio--title--mobile {
     text-align: center;
     text-transform: uppercase;
-    @include sans-serif;
-    font-size: 30px !important;
+    @include sans-serif-bold;
+    font-size: 14px !important;
 }
 
 #portfolio-nav.portfolio-nav--desktop {
@@ -42,7 +42,7 @@
     }
 
     .portfolio--title {
-        font-size: 32px;
+        font-size: 14px;
     }
 
     .portfolio-nav--prev-next {
@@ -53,14 +53,14 @@
 .portfolio--title {
     text-align: center;
     text-transform: uppercase;
-    @include sans-serif;
+    @include sans-serif-bold;
+    letter-spacing: 2.5px;
 }
 
 .portfolio--item-subtitle {
     font-size: 28px;
     line-height: 28px;
-    font-weight: bold;
-    font-style: italic;
+    @include serif-bold-italic;
     margin-bottom: 8px; // Space below when stacked above description
 }
 @media (max-width: $mobile-max-width) {
@@ -100,7 +100,7 @@
 }
 
 .portfolio--recent-work-title {
-    font-weight: bold;
+    @include serif-bold;
 }
 
 a.portfolio--recent-work-thumbnail {
