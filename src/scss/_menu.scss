@@ -3,10 +3,9 @@ header#top nav > ul {
 }
 
 header#top nav > ul > li.menu-item > a {
-    @include sans-serif;
+    @include sans-serif-bold;
     font-size: 14px;
     letter-spacing: 2.5px;
-    font-weight: bold;
     color: black !important;
     text-transform: uppercase;
 
@@ -20,9 +19,8 @@ header#top #toggle-nav i {
 
 
 #mobile-menu ul li.menu-item a {
-    @include sans-serif;
+    @include sans-serif-bold;
     text-transform: uppercase;
-    font-weight: bold;
     font-size: 16px;
 }
 
