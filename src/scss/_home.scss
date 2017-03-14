@@ -41,10 +41,9 @@
     text-align: center;
     padding-bottom: 32px;
     h2 {
-        @include sans-serif;
+        @include sans-serif-bold;
         text-transform: uppercase;
         font-size: 16px;
-        font-weight: bold;
         letter-spacing: 2.5px;
     }
 }
@@ -81,13 +80,6 @@ div.portfolio-grid-thumbnail {
     a {
         background-size: contain;
     }
-    .work-meta {
-        display: none;
-
-        .title {
-            font-family: sans-serif !important;
-        }
-    }
 }
 
 div.portfolio-grid-thumbnail:hover {
@@ -95,26 +87,6 @@ div.portfolio-grid-thumbnail:hover {
     -webkit-filter: grayscale(1);
     filter: grayscale(1);
     cursor: pointer;
-
-    .work-meta {
-        display: block;
-        position: absolute;
-        font-size: 28px;
-        font-weight: bold;
-        color: #fff;
-        -webkit-text-stroke: #666 1px;
-        -moz-text-stroke: #666 1px;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        text-align: right;
-        padding: 0 30px 20px 0;
-
-        .title {
-            font-family: sans-serif !important;
-        }
-
-    }
 }
 
 // Clients
@@ -136,17 +108,13 @@ ul.capabilities-list {
 }
 
 li.capabilities-header {
-    font-weight: bold;
+    @include serif-bold;
 }
 
 @media (max-width: 767px) {
     ul.capabilities-list {
         text-align: center;
     }
-}
-
-.home--articles {
-    padding: 0 20px;
 }
 
 .home--article {
@@ -159,7 +127,7 @@ li.capabilities-header {
 
 
     .article-title {
-        font-weight: bold;
+        @include serif-bold;
         font-size: 28px;
     }
 
@@ -168,7 +136,7 @@ li.capabilities-header {
     }
 
     .article-source {
-        font-style: italic;
+        @include serif-italic;
     }
 
 

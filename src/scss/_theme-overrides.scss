@@ -11,6 +11,23 @@ body {
     background-color: white;
 }
 
+.container-fluid {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#page-header-bg h1 {
+    @include sans-serif-bold;
+    text-transform: uppercase;
+}
+strong {
+    @include sans-serif-bold;
+}
+
+blockquote {
+    @include sans-serif;
+}
+
 #footer-outer {
     background-color: white;
 
