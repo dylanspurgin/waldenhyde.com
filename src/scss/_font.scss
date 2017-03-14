@@ -1,10 +1,23 @@
 @mixin serif () {
   font-family: 'Tiempos Text Regular', 'Crimson Text', serif;
 }
+@mixin serif-bold () {
+  font-family: 'Tiempos Text Bold', 'Crimson Text', serif;
+}
+@mixin serif-italic () {
+  font-family: 'Tiempos Text Regular Italic', 'Crimson Text', serif;
+}
+@mixin serif-bold-italic () {
+  font-family: 'Tiempos Text Bold Italic', 'Crimson Text', serif;
+}
 
 @mixin sans-serif () {
   font-family: 'Gotham HTF Book', 'Source Sans Pro', sans-serif;
 }
+@mixin sans-serif-bold () {
+  font-family: 'Gotham HTF Bold', 'Source Sans Pro', sans-serif;
+}
+
 
 @font-face {
     font-family: Tiempos Text Bold;

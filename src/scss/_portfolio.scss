@@ -59,8 +59,7 @@
 .portfolio--item-subtitle {
     font-size: 28px;
     line-height: 28px;
-    font-weight: bold;
-    font-style: italic;
+    @include serif-bold-italic;
     margin-bottom: 8px; // Space below when stacked above description
 }
 @media (max-width: $mobile-max-width) {
@@ -100,7 +99,7 @@
 }
 
 .portfolio--recent-work-title {
-    font-weight: bold;
+    @include serif-bold;
 }
 
 a.portfolio--recent-work-thumbnail {
