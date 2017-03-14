@@ -135,14 +135,14 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
             <div class="row">
             <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
                 <?php
-                    $link = get_post_meta($post->ID, '_nectar_link', true);
+                    $link = get_permalink($post->ID);
                     $index = $query->current_post+1;
                 ?>
                 <div class="article-grid-item col-xs-12 col-sm-4">
      			   <div class="article-image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
      			   </div>
                     <h2 class="article-title">
-     							   <a class="read-link" href="<?php echo $link ?>" target="_blank">
+     							   <a class="read-link" href="<?php echo $link ?>">
                         <?php echo the_title() ?>
      								 </a>
                     </h2>
@@ -152,7 +152,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                     <div class="article-source">
                         <?php echo get_post_custom_values('source', $post->ID)[0];?>
                     </div>
-                    <a class="read-link" href="<?php echo $link ?>" target="_blank"><strong>READ</strong></a>
+                    <a class="read-link" href="<?php echo $link ?>"><strong>READ</strong></a>
                     <br >
      			   <hr>
                 </div>
