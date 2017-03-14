@@ -96,15 +96,15 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
              <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
             <div class="row <?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
-                <div class="hidden-xs col-sm-1 col-md-2">
+                <div class="hidden-xs col-sm-1 col-lg-2">
                 </div>
-                <div class="col-sm-4 col-md-2 portfolio--item-subtitle">
+                <div class="col-sm-4 col-lg-2 portfolio--item-subtitle">
                     <?php echo get_post_meta($post->ID, '_nectar_portfolio_item_subtitle', true); ?>
                 </div>
-                <div class="col-sm-6 col-md-6 portfolio--item-description">
+                <div class="col-sm-6 col-lg-6 portfolio--item-description">
                     <?php echo get_post_meta($post->ID, '_nectar_project_excerpt', true); ?>
                 </div>
-                <div class="hidden-xs col-sm-1 col-md-2">
+                <div class="hidden-xs col-sm-1 col-lg-2">
                 </div>
             </div>
 
