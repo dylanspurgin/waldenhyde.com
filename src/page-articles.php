@@ -86,7 +86,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 <div class="home-page">
 
     <!-- Articles page -->
-	<div class="container-fluid no-gutter section-content">
+	<div class="container-fluid section-content">
 
         <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
@@ -126,7 +126,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                 'post_type' => 'post',
                 'category_name'=> 'homepage article',
                 'paged'=> $page,
-                'posts_per_page'=> 9
+                'posts_per_page'=> 3
             );
             $query = new WP_Query($args);
         ?>
