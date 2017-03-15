@@ -1,4 +1,36 @@
-#header-outer {
-    box-shadow: none;
-    -webkit-box-shadow: none;
+/* Override responsive.css rules */
+@media only screen and (max-width: $mobile-max-width) {
+
+    div#header-outer {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        
+    }
+
+    header#top {
+        padding: 0 12px;
+    }
+
+    body header#top a#logo {
+        margin-top: 0 !important;
+    }
+
+    body header#top a#logo img.retina-logo,
+    body header#top a#logo img.default-logo {
+        height: 20px !important;
+        margin-top: 0 !important;
+        top: 0 !important;
+    }
+}
+
+// Hamburger menu icon
+header#top #toggle-nav {
+    position: relative;
+    text-align: right;
+    margin-bottom: 0;
+    width: auto;
+
+    i {
+        line-height: 14px;
+    }
 }

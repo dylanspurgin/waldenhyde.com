@@ -144,92 +144,86 @@ if($using_secondary == 'header_with_secondary') { ?>
 
 	<header id="top">
 
-		<div class="container">
+		<div class="row">
 
-			<div class="row">
+            <div class="col-xs-12 col-md-1"></div>
 
-                <!-- <div class="col span_1">&nbsp;</div> -->
-                <div class="col-md-1 col-xs-0">&nbsp;</div>
+            <div class="col-xs-10 col-md-3">
 
-				<!-- <div class="col span_3"> -->
-                <div class="col-md-3 col-xs-10">
+				<a id="logo" href="<?php echo home_url(); ?>" <?php echo $logo_class; ?>>
 
-					<a id="logo" href="<?php echo home_url(); ?>" <?php echo $logo_class; ?>>
+					<?php if(!empty($options['use-logo'])) {
 
-						<?php if(!empty($options['use-logo'])) {
+							$default_logo_class = (!empty($options['retina-logo'])) ? 'default-logo' : null;
+							$dark_default_class = (empty($options['header-starting-logo-dark'])) ? ' dark-version': null;
 
-								$default_logo_class = (!empty($options['retina-logo'])) ? 'default-logo' : null;
-								$dark_default_class = (empty($options['header-starting-logo-dark'])) ? ' dark-version': null;
+							 echo '<img class="'.$default_logo_class. $dark_default_class.'" alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['logo']) . '" />';
 
-								 echo '<img class="'.$default_logo_class. $dark_default_class.'" alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['logo']) . '" />';
+							 if(!empty($options['retina-logo'])) echo '<img class="retina-logo '.$dark_default_class.'" alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['retina-logo']) . '" />';
 
-								 if(!empty($options['retina-logo'])) echo '<img class="retina-logo '.$dark_default_class.'" alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['retina-logo']) . '" />';
+							 //starting logo
+							 if($activate_transparency == 'true'){
+							 	 if(!empty($options['header-starting-logo'])) echo '<img class="starting-logo '.$default_logo_class.'"  alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['header-starting-logo']) . '" />';
+								 if(!empty($options['header-starting-retina-logo'])) echo '<img class="retina-logo starting-logo" alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['header-starting-retina-logo']) . '" />';
 
-								 //starting logo
-								 if($activate_transparency == 'true'){
-								 	 if(!empty($options['header-starting-logo'])) echo '<img class="starting-logo '.$default_logo_class.'"  alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['header-starting-logo']) . '" />';
-									 if(!empty($options['header-starting-retina-logo'])) echo '<img class="retina-logo starting-logo" alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['header-starting-retina-logo']) . '" />';
+								 if(!empty($options['header-starting-logo-dark'])) echo '<img class="starting-logo dark-version '.$default_logo_class.'"  alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['header-starting-logo-dark']) . '" />';
+								 if(!empty($options['header-starting-retina-logo-dark'])) echo '<img class="retina-logo starting-logo dark-version " alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['header-starting-retina-logo-dark']) . '" />';
 
-									 if(!empty($options['header-starting-logo-dark'])) echo '<img class="starting-logo dark-version '.$default_logo_class.'"  alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['header-starting-logo-dark']) . '" />';
-									 if(!empty($options['header-starting-retina-logo-dark'])) echo '<img class="retina-logo starting-logo dark-version " alt="'. get_bloginfo('name') .'" src="' . nectar_options_img($options['header-starting-retina-logo-dark']) . '" />';
+							 }
 
-								 }
+						 } else { echo get_bloginfo('name'); } ?>
+				</a>
 
-							 } else { echo get_bloginfo('name'); } ?>
-					</a>
+			</div><!--/logo column -->
 
-				</div><!--/span_3-->
+			<!-- Menus -->
+            <div class="col-xs-2 col-md-8">
 
-				<!-- <div class="col span_8 col_last"> -->
-                <div class="col-md-8 col-xs-2">
+				<?php if(has_nav_menu('top_nav')) echo '<a href="#mobilemenu" id="toggle-nav"><i class="icon-reorder"></i></a>'; ?>
 
-					<?php if(has_nav_menu('top_nav')) echo '<a href="#mobilemenu" id="toggle-nav"><i class="icon-reorder"></i></a>'; ?>
+				<?php
+				$sideWidgetArea = (!empty($options['header-slide-out-widget-area'])) ? $options['header-slide-out-widget-area'] : 'off';
 
-					<?php
-					$sideWidgetArea = (!empty($options['header-slide-out-widget-area'])) ? $options['header-slide-out-widget-area'] : 'off';
+				if (!empty($options['enable-cart']) && $options['enable-cart'] == '1') {
+					if ($woocommerce) { ?>
+						<!--mobile cart link-->
+						<a id="mobile-cart-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><i class="icon-salient-cart"></i></a>
+					<?php }
+				}
 
-					if (!empty($options['enable-cart']) && $options['enable-cart'] == '1') {
-						if ($woocommerce) { ?>
-							<!--mobile cart link-->
-							<a id="mobile-cart-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><i class="icon-salient-cart"></i></a>
-						<?php }
-					}
+				if($sideWidgetArea == '1') { ?>
+					<div class="slide-out-widget-area-toggle">
+						<div> <a href="#sidewidgetarea" class="closed"> <i class="icon-reorder"></i> </a> </div>
+   					</div>
+				<?php } ?>
 
-					if($sideWidgetArea == '1') { ?>
-						<div class="slide-out-widget-area-toggle">
-							<div> <a href="#sidewidgetarea" class="closed"> <i class="icon-reorder"></i> </a> </div>
-       					</div>
-					<?php } ?>
+				<!-- Desktop / full menu -->
+				<nav>
+					<ul class="buttons">
+						<li id="search-btn"><div><a href="#searchbox"><span class="icon-salient-search" aria-hidden="true"></span></a></div> </li>
 
-					<nav>
-						<ul class="buttons">
-							<li id="search-btn"><div><a href="#searchbox"><span class="icon-salient-search" aria-hidden="true"></span></a></div> </li>
+						<?php if($sideWidgetArea == '1') { ?>
+							<li class="slide-out-widget-area-toggle">
+								<div> <a href="#sidewidgetarea" class="closed"> <span> <i class="lines-button x2"> <i class="lines"></i> </i> </span> </a> </div>
+   							</li>
+						<?php } ?>
+					</ul>
+					<ul class="sf-menu">
+						<?php
+						if(has_nav_menu('top_nav')) {
+						    wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav', 'container' => '', 'items_wrap' => '%3$s' ) );
+						}
+						elseif($sideWidgetArea != '1') {
+							echo '<li><a href="">No menu assigned!</a></li>';
+						}
+						?>
+					</ul>
 
-							<?php if($sideWidgetArea == '1') { ?>
-								<li class="slide-out-widget-area-toggle">
-									<div> <a href="#sidewidgetarea" class="closed"> <span> <i class="lines-button x2"> <i class="lines"></i> </i> </span> </a> </div>
-       							</li>
-							<?php } ?>
-						</ul>
-						<ul class="sf-menu">
-							<?php
-							if(has_nav_menu('top_nav')) {
-							    wp_nav_menu( array('walker' => new Nectar_Arrow_Walker_Nav_Menu, 'theme_location' => 'top_nav', 'container' => '', 'items_wrap' => '%3$s' ) );
-							}
-							elseif($sideWidgetArea != '1') {
-								echo '<li><a href="">No menu assigned!</a></li>';
-							}
-							?>
-						</ul>
+				</nav>
 
-					</nav>
+			</div><!--/Menus-->
 
-				</div><!--/span_8-->
-                <div class="col span_1">&nbsp;</div>
-
-			</div><!--/row-->
-
-		</div><!--/container-->
+		</div><!--/row-->
 
 	</header>
 
