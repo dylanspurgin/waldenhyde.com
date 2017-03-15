@@ -1,0 +1,58 @@
+.article-grid-item {
+
+    .article-image {
+        height: 200px;
+        width: 100%;
+        background-size: cover;
+    }
+
+
+    .article-title {
+        font-weight: bold;
+        font-size: 28px;
+    }
+
+    .article-excerpt {
+        font-size: 18px;
+    }
+
+    .article-source {
+        font-style: italic;
+    }
+
+
+    a.read-link {
+        color: black;
+    }
+
+    hr {
+        border-color: black;
+        line-height: 2px;
+    }
+}
+
+.article-grid-item:last-of-type {
+    hr {
+        display: none;
+    }
+}
+
+@media(min-width: $screen-sm-min) {
+    .article-grid-item {
+        hr {
+            display: none;
+        }
+    }
+}
+
+@media(min-width: $screen-md-max) {
+    .article-grid-item {
+
+        .article-image {
+            height: 250px;
+            width: 100%;
+            background-size: cover;
+        }
+
+    }
+}

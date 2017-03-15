@@ -117,64 +117,6 @@ li.capabilities-header {
     }
 }
 
-.home--article {
-
-    .article-image {
-        height: 200px;
-        width: 100%;
-        background-size: cover;
-    }
-
-
-    .article-title {
-        @include serif-bold;
-        font-size: 28px;
-    }
-
-    .article-excerpt {
-        font-size: 18px;
-    }
-
-    .article-source {
-        @include serif-italic;
-    }
-
-
-    a.read-link {
-        color: black;
-    }
-
-    hr {
-        border-color: black;
-        line-height: 2px;
-    }
-}
-
-.home--article:last-of-type {
-    hr {
-        display: none;
-    }
-}
-
-@media(min-width: $screen-sm-min) {
-    .home--article {
-        hr {
-            display: none;
-        }
-    }
-}
-
-@media(min-width: $screen-md-max) {
-    .home--article {
-
-        .article-image {
-            height: 250px;
-            width: 100%;
-            background-size: cover;
-        }
-
-    }
-}
 
 /*
  * Make grid items the same height as their width

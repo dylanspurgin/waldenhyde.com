@@ -1,0 +1,18 @@
+
+.nectar-social a.nectar-sharing:hover {
+    text-decoration: none;
+}
+
+.single-post {
+
+    .heading-title h1.entry-title {
+        @include sans-serif-bold;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .post-content p {
+        font-size: 22px;
+        line-height: 32px;
+    }
+}
