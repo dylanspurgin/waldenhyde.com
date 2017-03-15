@@ -1,5 +1,5 @@
 <?php
-/*template name: Articles */
+/*template name: Contact with Image */
 get_header();
 
 $options = get_option('salient');
@@ -80,12 +80,11 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 </style>
 
 
-<!-- Uncomment to enable header slider content -->
+<!-- Uncomment to enable header slider content on contact page -->
 <?php //echo nectar_page_header($post->ID); ?>
 
-<div class="home-page">
+<div class="page contact-page">
 
-    <!-- Articles page -->
 	<div class="container-fluid section-content">
 
         <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
@@ -117,60 +116,20 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
             <div class="col-md-5"></div>
         </div>
 
-        <?php endwhile; endif; wp_reset_query(); ?>
-
-		<?php
-            // Get the articles posts
-            $page = get_query_var('paged', 1);
-            $args = array(
-                'post_type' => 'post',
-                'category_name'=> 'homepage article',
-                'paged'=> $page,
-                'posts_per_page'=> 9
-            );
-            $query = new WP_Query($args);
-        ?>
-
-        <div class="articles-grid">
-            <div class="row">
-            <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
-                <?php
-                    $link = get_permalink($post->ID);
-                    $index = $query->current_post+1;
-                ?>
-                <div class="article-grid-item col-xs-12 col-sm-4">
-     			   <div class="article-image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
-     			   </div>
-                    <h2 class="article-title">
-     							   <a class="read-link" href="<?php echo $link ?>">
-                        <?php echo the_title() ?>
-     								 </a>
-                    </h2>
-                    <p class="article-excerpt">
-                        <?php echo $post->post_excerpt ?>
-                    </p>
-                    <div class="article-source">
-                        <?php echo get_post_custom_values('source', $post->ID)[0];?>
-                    </div>
-                    <a class="read-link" href="<?php echo $link ?>"><strong>READ</strong></a>
-                    <br >
-     			   <hr>
-                </div>
-                <?php if ($index%3 == 0) echo '</div><div class="row">'; ?>
-    		<?php endwhile; endif; ?>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <img class="contact--featured-image" src="<?php echo get_the_post_thumbnail_url($post, 'full'); ?>" />
             </div>
+            <div class="col-xs-12 col-sm-6">
+                <?php the_content(); ?>
+            </div>
+
         </div>
 
-        <div class="row wh-pagination">
-            <div class="col-xs-6 previous-link">
-                <?php echo get_previous_posts_link('<i class="fa fa-long-arrow-left"></i> Newer articles', $query->max_num_pages); ?>
-            </div>
-            <div class="col-xs-6 next-link">
-                <?php echo get_next_posts_link('Older articles <i class="fa fa-long-arrow-right"></i>', $query->max_num_pages); ?>
-            </div>
-        </div>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
 
-   </div><!-- /container-fluid -->
+
+   </div><!-- /container (portfolio-wrap) -->
 
 
 </div><!-- /home-page -->
