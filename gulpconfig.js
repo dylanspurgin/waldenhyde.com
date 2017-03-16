@@ -1,15 +1,15 @@
 // ==== CONFIGURATION ==== //
 
 // Project paths
-var project     = 'salient-child-2',                   // The directory name for your theme; change this at the very least!
-    src         = './src/',                           // The raw material of your theme: custom scripts, SCSS source files, PHP files, images, etc.; do not delete this folder!
-    build       = './build/',                         // A temporary directory containing a development version of your theme; delete it anytime
-    dist        = './dist/'+project+'/',              // The distribution package that you'll be uploading to your server; delete it anytime
-    assets      = './assets/',                        // A staging area for assets that require processing before landing in the source folder (example: icons before being added to a sprite sheet)
-    bower       = './bower_components/',              // Bower packages
-    composer    = './vendor/',                        // Composer packages
-    modules     = './node_modules/',                  // npm packages
-    wordpress   = './wordpress';           // WordPress installation
+var project     = 'salient-child-2',        // The directory name for your theme; change this at the very least!
+    src         = './src/',                 // The raw material of your theme: custom scripts, SCSS source files, PHP files, images, etc.; do not delete this folder!
+    build       = './build/',               // A temporary directory containing a development version of your theme; delete it anytime
+    dist        = './dist/'+project+'/',    // The distribution package that you'll be uploading to your server; delete it anytime
+    assets      = './assets/',              // A staging area for assets that require processing before landing in the source folder (example: icons before being added to a sprite sheet)
+    bower       = './bower_components/',    // Bower packages
+    composer    = './vendor/',              // Composer packages
+    modules     = './node_modules/',        // npm packages
+    wordpress   = './wordpress';            // WordPress installation
 
 // Project settings
 module.exports = {
@@ -58,30 +58,30 @@ module.exports = {
 
   scripts: {
     bundles: { // Bundles are defined by a name and an array of chunks (below) to concatenate; warning: this method offers no dependency management!
-      footer: ['footer'],
-      header: ['header'],
-      pageloader: ['pageloader', 'footer']
+      footer: ['footer']
+    //   header: ['header'],
+    //   pageloader: ['pageloader', 'footer']
     },
     chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
       // The core footer chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here
       footer: [
-        modules+'timeago/jquery.timeago.js', // The modules directory contains packages downloaded via npm
-        src+'js/responsive-menu.js',
-        src+'js/footer.js'
-      ],
-      header: [
-        modules+'svg4everybody/dist/svg4everybody.js',
-        src+'js/header.js'
-      ],
-      // The pageloader chunk provides an example of how you would add a user-configurable feature to your theme; you can delete this if you wish
-      // Have a look at the `src/inc/assets.php` to see how script bundles could be conditionally loaded by a theme
-      pageloader: [
-        modules+'html5-history-api/history.js',
-        modules+'spin.js/spin.js',
-        modules+'spin.js/jquery.spin.js',
-        modules+'wp-ajax-page-loader/wp-ajax-page-loader.js',
-        src+'js/page-loader.js'
+        // modules+'timeago/jquery.timeago.js', // The modules directory contains packages downloaded via npm
+        src+'js/headroom.min.js',
+        src+'js/init.js'
       ]
+    //   header: [
+    //     modules+'svg4everybody/dist/svg4everybody.js',
+    //     src+'js/header.js'
+    //   ],
+    //   // The pageloader chunk provides an example of how you would add a user-configurable feature to your theme; you can delete this if you wish
+    //   // Have a look at the `src/inc/assets.php` to see how script bundles could be conditionally loaded by a theme
+    //   pageloader: [
+    //     modules+'html5-history-api/history.js',
+    //     modules+'spin.js/spin.js',
+    //     modules+'spin.js/jquery.spin.js',
+    //     modules+'wp-ajax-page-loader/wp-ajax-page-loader.js',
+    //     src+'js/page-loader.js'
+    //   ]
     },
     dest: build+'js/', // Where the scripts end up in your theme
     lint: {

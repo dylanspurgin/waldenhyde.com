@@ -6,6 +6,13 @@ body {
     display: none !important;
 }
 
+// push content below fixed header on mobile
+@media only screen and (max-width: $mobile-max-width) {
+    .container-fluid {
+        margin-top: 40px;
+    }
+}
+
 .container-wrap,
 .project-title {
     background-color: white;

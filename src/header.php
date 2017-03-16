@@ -146,8 +146,10 @@ if($using_secondary == 'header_with_secondary') { ?>
 
 		<div class="row">
 
+			<!-- spacer column on larger screens -->
             <div class="col-xs-12 col-md-1"></div>
 
+			<!-- logo column -->
             <div class="col-xs-10 col-md-3">
 
 				<a id="logo" href="<?php echo home_url(); ?>" <?php echo $logo_class; ?>>
@@ -179,22 +181,25 @@ if($using_secondary == 'header_with_secondary') { ?>
 			<!-- Menus -->
             <div class="col-xs-2 col-md-8">
 
-				<?php if(has_nav_menu('top_nav')) echo '<a href="#mobilemenu" id="toggle-nav"><i class="icon-reorder"></i></a>'; ?>
+				<!-- Mobile menu hamburger button -->
+				<?php
+					if (has_nav_menu('top_nav')) echo '<a href="#mobilemenu" id="toggle-nav"><i class="icon-reorder"></i></a>';
+				?>
 
 				<?php
-				$sideWidgetArea = (!empty($options['header-slide-out-widget-area'])) ? $options['header-slide-out-widget-area'] : 'off';
+					$sideWidgetArea = (!empty($options['header-slide-out-widget-area'])) ? $options['header-slide-out-widget-area'] : 'off';
 
-				if (!empty($options['enable-cart']) && $options['enable-cart'] == '1') {
-					if ($woocommerce) { ?>
-						<!--mobile cart link-->
-						<a id="mobile-cart-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><i class="icon-salient-cart"></i></a>
-					<?php }
-				}
+					if (!empty($options['enable-cart']) && $options['enable-cart'] == '1') {
+						if ($woocommerce) { ?>
+							<!--mobile cart link-->
+							<a id="mobile-cart-link" href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><i class="icon-salient-cart"></i></a>
+						<?php }
+					}
 
-				if($sideWidgetArea == '1') { ?>
-					<div class="slide-out-widget-area-toggle">
-						<div> <a href="#sidewidgetarea" class="closed"> <i class="icon-reorder"></i> </a> </div>
-   					</div>
+					if($sideWidgetArea == '1') { ?>
+						<div class="slide-out-widget-area-toggle">
+							<div> <a href="#sidewidgetarea" class="closed"> <i class="icon-reorder"></i> </a> </div>
+	   					</div>
 				<?php } ?>
 
 				<!-- Desktop / full menu -->
@@ -224,6 +229,28 @@ if($using_secondary == 'header_with_secondary') { ?>
 			</div><!--/Menus-->
 
 		</div><!--/row-->
+
+		<!-- mobile drop down menu -->
+		<div id="mobile-menu">
+			<div class="container">
+				<ul>
+					<?php
+						if(has_nav_menu('top_nav')) {
+						    wp_nav_menu( array('theme_location' => 'top_nav', 'menu' => 'Top Navigation Menu', 'container' => '', 'items_wrap' => '%3$s' ) );
+
+							// echo '<li id="mobile-search">
+							// <form action="'.home_url().'" method="GET">
+		                    // pe="text" name="s" value="" placeholder="'.__('Search..', NECTAR_THEME_NAME) .'" />
+							// </form>
+							// </li>';
+						}
+						else {
+							echo '<li><a href="">No menu assigned!</a></li>';
+						}
+					?>
+				</ul>
+			</div>
+		</div>
 
 	</header>
 
@@ -267,30 +294,6 @@ if($using_secondary == 'header_with_secondary') { ?>
 </div><!--/header-outer-->
 
 <?php if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend') { get_template_part('includes/header-search'); } ?>
-
-<div id="mobile-menu">
-
-	<div class="container">
-		<ul>
-			<?php
-				if(has_nav_menu('top_nav')) {
-
-				    wp_nav_menu( array('theme_location' => 'top_nav', 'menu' => 'Top Navigation Menu', 'container' => '', 'items_wrap' => '%3$s' ) );
-
-					// echo '<li id="mobile-search">
-					// <form action="'.home_url().'" method="GET">
-                    // pe="text" name="s" value="" placeholder="'.__('Search..', NECTAR_THEME_NAME) .'" />
-					// </form>
-					// </li>';
-				}
-				else {
-					echo '<li><a href="">No menu assigned!</a></li>';
-				}
-			?>
-		</ul>
-	</div>
-
-</div>
 
 
 <div id="ajax-loading-screen" data-method="<?php echo (!empty($options['transition-method'])) ? $options['transition-method'] : 'ajax' ; ?>"><span class="loading-icon <?php echo (!empty($options['loading-image-animation']) && !empty($options['loading-image'])) ? $options['loading-image-animation'] : null; ?>"> <?php if(empty($options['loading-image'])) { if(!empty($options['theme-skin']) && $options['theme-skin'] == 'ascend') { echo '<span class="default-loading-icon spin"></span>'; } else { echo '<span class="default-skin-loading-icon"></span>'; } } ?> </span></div>
