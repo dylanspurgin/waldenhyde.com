@@ -126,7 +126,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                 'post_type' => 'post',
                 'category_name'=> 'homepage article',
                 'paged'=> $page,
-                'posts_per_page'=> 3
+                'posts_per_page'=> 9
             );
             $query = new WP_Query($args);
         ?>
