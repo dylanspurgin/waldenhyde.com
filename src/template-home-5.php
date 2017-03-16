@@ -417,7 +417,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
        <?php foreach ($posts as $post) {
 		   // TODO - use permalink when Articles section is ready to go live
-		      $link = get_post_meta($post->ID, '_nectar_link', true);
+	      $link = get_post_meta($post->ID, '_nectar_link', true);
 		//    $link = get_permalink($post->ID);
 	   ?>
            <div class="article-grid-item col-xs-12 col-sm-4">

@@ -6,9 +6,13 @@
 .single-post {
 
     .heading-title h1.entry-title {
-        @include sans-serif-bold;
+        @include serif-bold;
         font-size: 40px;
         margin-bottom: 10px;
+    }
+
+    article {
+        max-width: 640px;
     }
 
     .post-content p {
