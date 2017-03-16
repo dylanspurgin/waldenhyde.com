@@ -146,11 +146,8 @@ if($using_secondary == 'header_with_secondary') { ?>
 
 		<div class="row">
 
-			<!-- spacer column on larger screens -->
-            <div class="col-xs-12 col-md-1"></div>
-
 			<!-- logo column -->
-            <div class="col-xs-10 col-md-3">
+            <div class="col-xs-10 col-md-4">
 
 				<a id="logo" href="<?php echo home_url(); ?>" <?php echo $logo_class; ?>>
 

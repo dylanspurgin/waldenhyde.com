@@ -3,10 +3,14 @@ div#header-outer {
     -webkit-box-shadow: none;
 }
 
-@media only screen and (min-width: $tablet-min-width) {
+@media only screen and (min-width: $desktop-min-width) {
     header#top {
         .row {
             padding-bottom: 4px;
+
+            #logo {
+                padding-left: 40px;
+            }
         }
     }
 }
@@ -35,7 +39,7 @@ header#top #toggle-nav i {
     MOBILE
 */
 /* Mobile header (headroom.js) */
-@media only screen and (max-width: $mobile-max-width) {
+@media only screen and (max-width: $tablet-max-width) {
     header#top {
         padding: 10px 12px;
 
@@ -105,6 +109,7 @@ header#top #toggle-nav:hover {
 }
 
 #mobile-menu ul li:last-child {
+    padding-bottom: 0 !important;
     a {
         border-bottom: none !important;
     }
