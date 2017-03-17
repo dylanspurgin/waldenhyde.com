@@ -32,7 +32,8 @@ strong {
 }
 
 blockquote {
-    @include sans-serif;
+    @include serif;
+    line-height: 140%;
 }
 
 #footer-outer {
