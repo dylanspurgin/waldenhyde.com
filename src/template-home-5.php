@@ -416,9 +416,9 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 			 <div class="row articles-grid">
 
        <?php foreach ($posts as $post) {
-		   // TODO - use permalink when Articles section is ready to go live
-	      $link = get_post_meta($post->ID, '_nectar_link', true);
-		//    $link = get_permalink($post->ID);
+		   // Use Link URL value if set. Otherwise use post link
+	       $external_link = get_post_meta($post->ID, '_nectar_link', true);
+		   $link = strlen($external_link) > 1 ? $external_link : get_permalink($post->ID);
 	   ?>
            <div class="article-grid-item col-xs-12 col-sm-4">
 			   <div class="article-image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
