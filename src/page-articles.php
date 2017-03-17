@@ -135,7 +135,9 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
             <div class="row">
             <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
                 <?php
-                    $link = get_permalink($post->ID);
+					// Use Link URL value if set. Otherwise use post link
+		 	        $external_link = get_post_meta($post->ID, '_nectar_link', true);
+		 		    $link = strlen($external_link) > 1 ? $external_link : get_permalink($post->ID);
                     $index = $query->current_post+1;
                 ?>
                 <div class="article-grid-item col-xs-12 col-sm-4">
