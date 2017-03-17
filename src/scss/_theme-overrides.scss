@@ -19,8 +19,8 @@ body {
 }
 
 .container-fluid {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: $container-padding;
+    padding-right: $container-padding;
 }
 
 #page-header-bg h1 {
