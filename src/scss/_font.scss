@@ -18,6 +18,10 @@
   font-family: 'Gotham HTF Bold', 'Source Sans Pro', sans-serif;
 }
 
+@mixin font-size-default () {
+    font-size: 28px;
+}
+
 
 @font-face {
     font-family: Tiempos Text Bold;

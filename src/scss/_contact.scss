@@ -1,0 +1,14 @@
+.contact-page {
+    @include font-size-default;
+}
+
+.contact--featured-image {
+    width: 100%;
+    margin-bottom: 27px; // Match <p> default bottom padding
+}
+
+.newsletter-container {
+    background-color: $tan;
+    padding: 20px;
+    margin-bottom: 27px; // Match <p> default bottom padding
+}
