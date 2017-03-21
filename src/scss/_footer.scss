@@ -1,0 +1,48 @@
+#footer-outer {
+
+    padding: 40px 0 0 0;
+    background-color: $tan;
+    #copyright {
+        background-color: $tan;
+    }
+
+    #footer-widgets > .container-fluid > .row {
+        padding: 0;
+
+        .widget {
+            margin-bottom: 0;
+        }
+
+        ul#menu-footer-menu {
+            margin-bottom: 0;
+
+            li {
+                margin-right: 40px;
+                padding: 0 !important;
+
+                a {
+                    @include sans-serif-bold;
+                    text-transform: uppercase;
+                    color: $gray;
+                    padding: 0 !important;
+                }
+            }
+        }
+    }
+
+    ul#social li {
+        margin: 0 20px 20px 0px;
+    }
+}
+
+// Tablet/Desktop specific styles
+@media (min-width: $tablet-min-width) {
+    #footer-outer > #footer-widgets > .container-fluid > .row {
+        ul#menu-footer-menu li {
+            float: left;
+        }
+    }
+    .copyright {
+        float: right;
+    }
+}
