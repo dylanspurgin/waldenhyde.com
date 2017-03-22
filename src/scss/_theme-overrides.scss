@@ -6,21 +6,30 @@ body {
     display: none !important;
 }
 
-// push content below fixed header on mobile
+.container-wrap,
+.project-title {
+    background-color: $white;
+}
+
 @media only screen and (max-width: $mobile-max-width) {
     .container-fluid {
-        margin-top: 40px;
+        padding-left: $container-padding-phone;
+        padding-right: $container-padding-phone;
     }
 }
 
-.container-wrap,
-.project-title {
-    background-color: white;
+@media only screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
+    .container-fluid {
+        padding-left: $container-padding-tablet;
+        padding-right: $container-padding-tablet;
+    }
 }
 
-.container-fluid {
-    padding-left: $container-padding;
-    padding-right: $container-padding;
+@media only screen and (min-width: $desktop-min-width) {
+    .container-fluid {
+        padding-left: $container-padding-desktop;
+        padding-right: $container-padding-desktop;
+    }
 }
 
 #page-header-bg h1 {
@@ -35,12 +44,4 @@ strong {
 blockquote {
     @include serif;
     line-height: 140%;
-}
-
-#footer-outer {
-    background-color: white;
-
-    #copyright {
-        background-color: white;
-    }
 }

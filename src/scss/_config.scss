@@ -2,6 +2,7 @@
 
 // Set all your configuration variables here!
 $black: #000;
+$white: #fff;
 $gray: #777;
 $tan: #f3eee8;
 
@@ -10,7 +11,9 @@ $tan: #f3eee8;
 //$width-left:    650px;
 //$width-right:   350px;
 
-$container-padding: 80px;
+$container-padding-phone: 20px;
+$container-padding-tablet: 40px;
+$container-padding-desktop: 80px;
 
 // Breakpoints (TODO - figure out if these are still used)
 // $break-small:   480px;
