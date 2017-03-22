@@ -38,6 +38,13 @@ header#top #toggle-nav i {
 /*
     MOBILE
 */
+// push content below fixed header on mobile
+@media only screen and (max-width: $mobile-menu-max-width) {
+    #ajax-content-wrap {
+        margin-top: 40px;
+    }
+}
+
 /* Mobile header (headroom.js) */
 @media only screen and (max-width: $tablet-max-width) {
     header#top {
