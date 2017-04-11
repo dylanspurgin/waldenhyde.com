@@ -56,7 +56,7 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
 		<div class="container main-content">
 
             <!-- Mobile portfolio navigation + title -->
-            <div class="rowm no-gutter hidden-md hidden-lg portfolio-nav--mobile" id="portfolio-nav">
+            <div class="row no-gutter hidden-md hidden-lg portfolio-nav--mobile" id="portfolio-nav">
                 <div class="col-xs-4 portfolio-nav--prev">
                     <?php next_post_link('%link', '<i class="icon-salient-left-arrow-thin"></i>', true, '', 'project-type'); ?>
                 </div>
@@ -95,7 +95,7 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
 
              <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
-            <div class="row <?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
+            <div class="row portfolio--subtitle-excerpt-row <?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
                 <div class="hidden-xs col-sm-1 col-lg-2">
                 </div>
                 <div class="col-sm-4 col-lg-2 portfolio--item-subtitle">

@@ -45,3 +45,8 @@ blockquote {
     @include serif;
     line-height: 140%;
 }
+
+a.styled-link {
+    @include sans-serif-bold;
+    text-transform: uppercase;
+}
