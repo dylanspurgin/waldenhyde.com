@@ -43,6 +43,7 @@ ul.sf-menu {
             content: '';
             display: block;
             border-bottom: solid 2px $pink;
+            margin-right: 2.5px; // Negate extra space after last letter in menu item caused by letter-spacing
         }
     }
 }

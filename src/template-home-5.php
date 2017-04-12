@@ -142,7 +142,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
             <!-- Portfolio grid item -->
-            <div class="portfolio-grid-thumbnail fixed-ratio col-xs-6 col-sm-6 col-md-4 col-lg-4 no-gutter">
+            <div class="portfolio-grid-thumbnail fixed-ratio col-xs-12 col-sm-4 col-md-4 col-lg-4 no-gutter">
 				<a href="<?php echo get_page_link(); ?>"
                     class="portfolio-grid-thumbnail"
                     style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
