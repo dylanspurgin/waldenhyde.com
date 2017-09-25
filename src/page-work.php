@@ -145,22 +145,61 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 			$wp_query = new WP_Query($portfolio);
         ?>
 
+		<div class="portfolio-items__container">
 		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
-            <!-- Portfolio grid item -->
-            <div class="portfolio-grid-thumbnail fixed-ratio col-xs-12 col-sm-4 col-md-4 col-lg-4 no-gutter">
+			<?php $grid_index = $wp_query->current_post+1; ?>
+
+			<?php if (1 == $grid_index): ?>
 				<a href="<?php echo get_page_link(); ?>"
-                    class="portfolio-grid-thumbnail"
-                    style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
+	                class="portfolio-grid-item portfolio-grid-item--1"
+	                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+			<?php elseif (2 == $grid_index): ?>
+				<div class="portfolio-grid-row-2" id="pagetwo">
+					<a href="<?php echo get_page_link(); ?>"
+		                class="portfolio-grid-item portfolio-grid-item--2"
+		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
 
-                    <!-- <div class="work-meta">
-						<span class="title"><?php //the_title(); ?></span>
-					</div> -->
+			<?php elseif (3 == $grid_index): ?>
+			        <div class="portfolio-grid-items--3-4-5__container">
+						<div class="portfolio-grid-items--3-4__container">
+							<a href="<?php echo get_page_link(); ?>"
+			                	class="portfolio-grid-item portfolio-grid-item--3"
+				                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+			<?php elseif (4 == $grid_index): ?>
+							<a href="<?php echo get_page_link(); ?>"
+				                class="portfolio-grid-item portfolio-grid-item--4"
+				                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+						</div>
+			<?php elseif (5 == $grid_index): ?>
+						<a href="<?php echo get_page_link(); ?>"
+							class="portfolio-grid-item portfolio-grid-item--5"
+							style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+					</div>
+				</div>
+			<?php elseif (6 == $grid_index): ?>
+				<div class="portfolio-grid-items--6-7__container">
+					<a href="<?php echo get_page_link(); ?>"
+		                class="portfolio-grid-item portfolio-grid-item--6"
+		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+			<?php elseif (7 == $grid_index): ?>
+					<a href="<?php echo get_page_link(); ?>"
+		                class="portfolio-grid-item portfolio-grid-item--7"
+		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+				</div>
 
+			<?php else: ?>
+
+				<a href="<?php echo get_page_link(); ?>"
+	                class="portfolio-grid-item portfolio-grid-item--8"
+	                style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
 				</a>
-            </div><!--work-item-->
+
+			<?php endif; ?>
 
 		<?php endwhile; endif; ?>
+
+		</div>
 
    </div><!-- /container (portfolio-wrap) -->
 

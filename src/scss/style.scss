@@ -29,11 +29,14 @@ Domain Path: #{metadata(theme-text-domain-path)}
 
 @import "font";
 @import "bootstrap-sass/assets/stylesheets/bootstrap";
+@import "animate";
 
 @import "breakpoints";
 @import "theme-overrides";
 // @import "boxed-overrides"; // Not currently using boxed layout
 @import "bootstrap-customizations";
+@import "text";
+@import "spacing";
 
 // Components
 @import "header";

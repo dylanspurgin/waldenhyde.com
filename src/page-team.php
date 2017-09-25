@@ -4,90 +4,15 @@ get_header();
 
 $options = get_option('salient');
 
-//calculate cols
-if(!empty($options['main_portfolio_layout'])) {
-
-	switch($options['main_portfolio_layout']){
-		case '3':
-			$cols = 'cols-3';
-			break;
-		case '4':
-			$cols = 'cols-4';
-			break;
-		case 'fullwidth':
-			$cols = 'elastic';
-			break;
-	}
-
-} else {
-	$cols = 'cols-3';
-}
-
-if(!empty($cols)) {
-
-	switch($cols){
-		case 'cols-3':
-			$span_num = 'span_4';
-			break;
-		case 'cols-4':
-			$span_num = 'span_3';
-			break;
-		case 'elastic':
-			$span_num = 'elastic-portfolio-item';
-			break;
-
-	}
-
-}
-
-$project_style = (!empty($options['main_portfolio_project_style'])) ? $options['main_portfolio_project_style'] : '1' ;
-$masonry_layout = (!empty($options['portfolio_use_masonry']) && $options['portfolio_use_masonry'] == '1') ? 'true' : 'false';
-$infinite_scroll_class = (!empty($options['portfolio_pagination_type']) && $options['portfolio_pagination_type'] == 'infinite_scroll') ? ' infinite_scroll' : null;
-
-//disable masonry for default project style fullwidtrh
-if($project_style == '1' && $cols == 'elastic') $masonry_layout = 'false';
-
-$display_sortable = get_post_meta($post->ID, 'nectar-metabox-portfolio-display-sortable', true);
-$inline_filters = (!empty($options['portfolio_inline_filters']) && $options['portfolio_inline_filters'] == '1') ? '1' : '0';
-$filters_id = (!empty($options['portfolio_inline_filters']) && $options['portfolio_inline_filters'] == '1') ? 'portfolio-filters-inline' : 'portfolio-filters';
-$bg = get_post_meta($post->ID, '_nectar_header_bg', true);
-
 ?>
-
-<style>
-	<?php if($span_num == 'elastic-portfolio-item') { ?>
-		.container-wrap { padding-bottom: 0px!important; }
-		#call-to-action .triangle { display: none; }
-	<?php } ?>
-
-	<?php if($span_num == 'elastic-portfolio-item' && !empty($bg)) { ?>
-		.container-wrap { padding-top: 0px!important; }
-	<?php } ?>
-
-	<?php if($inline_filters == '1' && empty($bg)) { ?>
-		.page-header-no-bg { display: none; }
-		.container-wrap { padding-top: 0px!important; }
-		body #portfolio-filters-inline { margin-top: -50px!important; padding-top: 5.8em!important; }
-	<?php } ?>
-
-	<?php if($inline_filters == '1' && empty($bg) && $span_num != 'elastic-portfolio-item') { ?>
-		#portfolio-filters-inline.non-fw { margin-top: -37px!important; padding-top: 6.5em!important;}
-	<?php } ?>
-
-	<?php if($inline_filters == '1' && !empty($bg) && $span_num != 'elastic-portfolio-item') { ?>
-		.container-wrap { padding-top: 3px!important; }
-	<?php } ?>
-</style>
-
 
 <!-- Uncomment to enable header slider content on work page -->
 <?php //echo nectar_page_header($post->ID); ?>
 
 <div class="home-page">
 
-    <!-- Work -->
     <?php
-        // $the_slug = 'work';
+        // $the_slug = 'team';
         // $args = array(
         //   'pagename'    => $the_slug,
         //   'post_type'   => 'page',
@@ -145,22 +70,19 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 			$wp_query = new WP_Query($portfolio);
         ?>
 
+		<div class="team-grid-item__container">
 		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-
             <!-- Portfolio grid item -->
-            <div class="portfolio-grid-thumbnail fixed-ratio col-xs-6 col-sm-6 col-md-4 col-lg-4 no-gutter">
-				<a href="<?php echo get_page_link(); ?>"
-                    class="portfolio-grid-thumbnail"
-                    style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
-
-                    <!-- <div class="work-meta">
-						<span class="title"><?php //the_title(); ?></span>
-					</div> -->
-
-				</a>
+            <div class="team-grid-item">
+				<img class="team-grid-thumbnail" src="<?php the_post_thumbnail_url(); ?>">
+				<div class="team-meta__container">
+					<h3 class="title"><?php the_title(); ?></h3>
+					<h4 class="team-position"><?php echo get_post_meta($post->ID, '_nectar_portfolio_item_subtitle', true); ?></h4>
+					<p class=""><?php the_content(); ?></p>
+				</div>
             </div><!--work-item-->
-
 		<?php endwhile; endif; ?>
+		</div>
 
    </div><!-- /container (portfolio-wrap) -->
 

@@ -6,6 +6,12 @@ body {
     display: none !important;
 }
 
+.content__wrapper {
+    @media (max-width: $mobile-max-width) {
+        padding-top: 56px; // mobile header height
+    }
+}
+
 .container-wrap,
 .project-title {
     background-color: $white;

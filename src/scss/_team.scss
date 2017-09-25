@@ -1,12 +1,35 @@
-.single-portfolio #post-area {
+.team-grid-item__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-    blockquote p {
-        font-size: 22px;
-        line-height: 30px;
+    @media (min-width: $tablet-min-width) {
+        padding-left: 60px;
+    }
+}
+
+
+.team-grid-item {
+
+    width: calc(33vw - 20px);
+    padding: 10px;
+
+    img {
+        max-width: 100%;
     }
 
-    p {
-        font-size: 18px;
+    .team-position {
+        @include sans-serif-bold;
+        text-transform: uppercase;
+        font-size: 14px;
     }
 
+    @media (max-width: $mobile-max-width) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 100vw;
+
+    }
 }

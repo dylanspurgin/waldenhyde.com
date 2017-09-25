@@ -24,6 +24,26 @@
     add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
 
 
+    // Add site lead-in
+    function your_theme_new_customizer_settings($wp_customize) {
+        // add a setting for the site logo
+        $wp_customize->add_setting('site_leadin');
+        // Add a control to upload the logo
+        $wp_customize->add_control(
+            new WP_Customize_Control(
+                $wp_customize,
+                'site_leadin',
+                array(
+                    'label' => 'Site Lead In',
+                    'section' => 'title_tagline',
+                    'settings' => 'site_leadin',
+                    'type' => 'textarea'
+                )
+        ));
+    }
+    add_action('customize_register', 'your_theme_new_customizer_settings');
+
+
     function theme_footer_js() {
         wp_enqueue_script('themeFooterJs', get_stylesheet_directory_uri().'/js/x-footer.js', array('jquery'), '0.9.3', TRUE);
     }

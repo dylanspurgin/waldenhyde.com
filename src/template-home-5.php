@@ -100,30 +100,16 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
     ?>
 	<div class="container-fluid no-gutter section-content">
 
-        <!-- Work Lead in -->
-        <div class="row home--section-lead-in">
-            <div class="col-xs-1 col-sm-2 col-md-3"></div>
-            <div class="col-xs-10 col-sm-8 col-md-6">
-                <?php echo $header_subtitle ?>
-            </div>
-            <div class="col-xs-1 col-sm-2 col-md-3"></div>
+		<div class="site-tagline__container">
+            <h2 class="site-tagline"><?php echo get_bloginfo('description') ?></h2>
+			<section class="site-leadin"><?php echo get_theme_mod('site_leadin') ?></section>
         </div>
 
-        <div class="row home--section-hr">
-            <div class="col-xs-4 col-md-5"></div>
-            <div class="col-xs-4 col-md-2">
-                <hr>
-            </div>
-            <div class="col-xs-4 col-md-5"></div>
-        </div>
-
-        <div class="row home--section-header">
-            <div class="col-md-5"></div>
-            <div class="col-md-2">
-                <h2><?php echo $header_title ?></h2>
-            </div>
-            <div class="col-md-5"></div>
-        </div>
+		<div class="more-link__container js-scrollToWrapper js-homeMoreLinkWrapper">
+			<div class="more-link__wrapper">
+				<a href="#pagetwo" class="more-link">More<br><span>&#8595;</span></a>
+			</div>
+		</div>
 
 		<?php
             // Get the portfolio posts
@@ -141,12 +127,46 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
 		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
-            <!-- Portfolio grid item -->
-            <div class="portfolio-grid-thumbnail fixed-ratio col-xs-12 col-sm-4 col-md-4 col-lg-4 no-gutter">
+			<?php $grid_index = $wp_query->current_post+1; ?>
+
+			<?php if (1 == $grid_index): ?>
 				<a href="<?php echo get_page_link(); ?>"
-                    class="portfolio-grid-thumbnail"
-                    style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-            </div><!--work-item-->
+	                class="portfolio-grid-item portfolio-grid-item--1"
+	                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+			<?php elseif (2 == $grid_index): ?>
+				<div class="portfolio-grid-row-2" id="pagetwo">
+					<a href="<?php echo get_page_link(); ?>"
+		                class="portfolio-grid-item portfolio-grid-item--2"
+		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+
+			<?php elseif (3 == $grid_index): ?>
+			        <div class="portfolio-grid-items--3-4-5__container">
+						<div class="portfolio-grid-items--3-4__container">
+							<a href="<?php echo get_page_link(); ?>"
+			                	class="portfolio-grid-item portfolio-grid-item--3"
+				                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+			<?php elseif (4 == $grid_index): ?>
+							<a href="<?php echo get_page_link(); ?>"
+				                class="portfolio-grid-item portfolio-grid-item--4"
+				                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+						</div>
+			<?php elseif (5 == $grid_index): ?>
+						<a href="<?php echo get_page_link(); ?>"
+							class="portfolio-grid-item portfolio-grid-item--5"
+							style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+					</div>
+				</div>
+			<?php elseif (6 == $grid_index): ?>
+				<div class="portfolio-grid-items--6-7__container">
+					<a href="<?php echo get_page_link(); ?>"
+		                class="portfolio-grid-item portfolio-grid-item--6"
+		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+			<?php elseif (7 == $grid_index): ?>
+					<a href="<?php echo get_page_link(); ?>"
+		                class="portfolio-grid-item portfolio-grid-item--7"
+		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+				</div>
+			<?php endif; ?>
 
 		<?php endwhile; endif; ?>
 
@@ -279,7 +299,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        <?php wp_reset_postdata(); ?>
 
        <!-- Capabilities -->
-       <div class="row col collapsible-container collapse">
+       <div class="row collapsible-container collapse">
            <div class="row home--section-hr">
                <div class="col-xs-4 col-md-5"></div>
                <div class="col-xs-4 col-md-2">
@@ -290,11 +310,11 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
            <!-- Capabilities title -->
            <div class="row home--section-header">
-               <div class="col-md-5">&nbsp;</div>
-               <div class="col-md-2">
+               <div class="col-md-4">&nbsp;</div>
+               <div class="col-md-4">
                    <h2>Capabilities</h2>
                </div>
-               <div class="col-md-5">&nbsp;</div>
+               <div class="col-md-4">&nbsp;</div>
            </div>
 
            <!-- Capabilities content / excerpt -->
