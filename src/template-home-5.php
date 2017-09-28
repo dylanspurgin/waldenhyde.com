@@ -299,7 +299,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        <?php wp_reset_postdata(); ?>
 
        <!-- Capabilities -->
-       <div class="row collapsible-container collapse">
+       <div class="collapsible-container collapse container-fluid">
            <div class="row home--section-hr">
                <div class="col-xs-4 col-md-5"></div>
                <div class="col-xs-4 col-md-2">
@@ -318,51 +318,30 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
            </div>
 
            <!-- Capabilities content / excerpt -->
-          <div class="row">
-              <div class="col-xs-12 col-sm-2 col-md-2"></div>
-              <div class="col-xs-12 col-sm-3 col-md-3">
-                  <ul class="capabilities-list">
-                      <li class="capabilities-header">Research</li>
-                      <li>Consumer Insights<li>
-                      <li>Internal Insights<li>
-                      <li>Trends &amp; Culture<li>
-                      <li>Planning<li>
-                      <li>Story Gathering<li>
-                      <li>Segmentation<li>
-                      <li>Psychographics<li>
-                      <li>Brand Audit<li>
-                      <li>Market Testing<li>
-                  </ul>
+          <div class="row u-padding--bottom--none">
+              <div class="col-xs-12 col-md-1"></div>
+              <div class="col-xs-12 col-sm-6 col-md-5">
+                  <h4 class="capabilities-header u-uppercase u-spaced-out">Strategy</h4>
+                  <p class="capabilities-text">Walden Hyde formed from the merger of research firm Kickstand and creative house Sustineo. Research and strategy are core to who we are and how we work. We have conducted consumer field research, market analysis, and strategic planning for Unilever, Nestlé Purina, Klean Kanteen, and others. We also released the largest syndicated study to date on sustainability in mainstream America. All agencies say they do strategy. Some actually do. Walden Hyde has a dedicated strategy team of made up of researchers, anthropologists, and brand analysts.</p>
               </div>
-              <div class="col-xs-12 col-sm-3 col-md-3">
-                  <ul class="capabilities-list">
-                      <li class="capabilities-header">Strategy</li>
-                      <li>Brand Implications<li>
-                      <li>Territory ID<li>
-                      <li>Brand Innovation<li>
-                      <li>Naming<li>
-                      <li>Messaging &amp; Copy<li>
-                      <li>Campaign Planning<li>
-                      <li>Creative Concepting<li>
-                      <li>Bid &amp; Grant Writing<li>
-                      <li>Workshops<li>
-                  </ul>
+			  <div class="col-xs-12 col-sm-6 col-md-5">
+                  <h4 class="capabilities-header u-uppercase u-spaced-out">Network</h4>
+                  <p class="capabilities-text">The way brands and consumers relate is constantly evolving. We can help you stay relevant in the ways you engage your audience. Our network capabilities include influencers, social media, and partnerships. For example: tailoring your influencer strategy begins with knowing your goals and connecting with the right influencers in the right way. By establishing long-lasting relationships with influencers and managing every step of the process, Walden Hyde makes influencer collaboration as effective and seamless for your team as possible, while requiring minimal effort on your part to maintain.</p>
               </div>
-              <div class="col-xs-12 col-sm-3 col-md-3">
-                  <ul class="capabilities-list">
-                      <li class="capabilities-header">Creative</li>
-                      <li>Branding & Identity<li>
-                      <li>Advertising<li>
-                      <li>Infographics<li>
-                      <li>Packaging<li>
-                      <li>Film & Photography<li>
-                      <li>Web & Digital<li>
-                      <li>Environmental Graphics<li>
-                      <li>Exhibits<li>
-                      <li>Reports & Proposals<li>
-                  </ul>
+			  <div class="col-xs-12 col-md-1"></div>
+		  </div>
+
+		  <div class="row">
+			  <div class="col-xs-12 col-md-1"></div>
+			  <div class="col-xs-12 col-sm-6 col-md-5">
+                  <h4 class="capabilities-header u-uppercase u-spaced-out">Creative</h4>
+                  <p class="capabilities-text">We believe great design changes the world. Walden Hyde is a full-service creative agency, delivering award-winning visual experiences that connect brands and consumers. All of our creative work is driven by insights and strategy. Our capabilities include digital, web, print, packaging, and space design.</p>
               </div>
-             <div class="col-xs-12 col-sm-1 col-md-1"></div>
+			  <div class="col-xs-12 col-sm-6 col-md-5">
+                  <h4 class="capabilities-header u-uppercase u-spaced-out">Media</h4>
+                  <p class="capabilities-text">Predictive marketing, social media, and the rise of influencers are changing the landscape of media buying. We work with clients through every step of the media process from building comprehensive, agile media plans to launching, monitoring, tracking, and adjusting ad buys and creative.</p>
+              </div>
+             <div class="col-xs-12 col-md-1"></div>
           </div>
       </div>
       <script type="text/javascript">
