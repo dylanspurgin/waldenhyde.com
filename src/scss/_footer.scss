@@ -57,8 +57,18 @@
     // Newsletter signup form
 
     .widget.widget_wysija {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &>* {
+            width: 100%;
+            max-width: 500px;
+        }
+
         @media (max-width: $tablet-max-width) {
             padding: 55px 0;
+            align-items: flex-start;
         }
     }
 

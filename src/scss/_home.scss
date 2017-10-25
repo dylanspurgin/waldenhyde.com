@@ -51,23 +51,6 @@
     }
 }
 
-.site-leadin__wrapper {
-    width: 100%;
-    text-align: center;
-}
-.site-leadin {
-    margin: 20px auto 10px auto;
-    padding: 0;
-    font-size: 42px;
-    width: 50vw;
-
-    @media (max-width: $mobile-max-width) {
-        font-size: 30px;
-        margin: 0;
-        width: auto;
-    }
-}
-
 .more-link__wrapper {
     display: none; // will fadein on non-mobile
     position: absolute;

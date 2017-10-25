@@ -1,0 +1,33 @@
+.section-content {
+    padding: 60px 17px 60px 72px;
+
+    @media (max-width: $mobile-max-width) {
+        padding: 60px 40px;
+    }
+}
+
+.section-content__boxed {
+    width: 50vw;
+    max-width: 740px;
+    padding: 60px 0 60px 0;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    @media (max-width: $mobile-max-width) {
+        width: auto;
+        padding: 60px 40px;
+    }
+}
+
+.section-callout__wrapper {
+    width: 100%;
+}
+.section-callout {
+    margin: 20px auto 10px auto;
+    padding: 0;
+    font-size: 42px;
+    @media (max-width: $mobile-max-width) {
+        font-size: 30px;
+        margin: 0;
+        width: auto;
+    }
+}

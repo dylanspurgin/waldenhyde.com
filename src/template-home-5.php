@@ -84,9 +84,9 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 		<?php endif; ?>
 	</div>
 
-	<div class="container-fluid no-gutter section-content" id="pagetwo">
-		<div class="site-leadin__wrapper">
-			<p class="site-leadin"><?php echo get_theme_mod('site_leadin') ?></p>
+	<div class="container-fluid no-gutter section-content__boxed" id="pagetwo">
+		<div class="section-callout__wrapper">
+			<p class="section-callout u-align--center"><?php echo get_theme_mod('site_leadin') ?></p>
 		</div>
 	</div>
 
@@ -156,65 +156,40 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
    <!-- About content -->
-   <div class="container-fluid section-content" id="about">
+	<div class="container-fluid no-gutter section-content" id="about">
+		<div class="home--about__wrapper">
+			<div class="section-content__boxed">
 
-       <!-- About Lead in -->
-       <!-- <div class="row home--section-lead-in">
-           <div class="col-md-2"></div>
-           <div class="col-md-8">
-               <?php echo $header_subtitle ?>
-           </div>
-           <div class="col-md-2"></div>
-       </div>
+				<div class="home--about-excerpt__wrapper">
+					<div class="about-featured-image__wrapper">
+						<img src="<?php the_post_thumbnail_url(); ?>" class="about-featured-image">
+					</div>
+					<div class="home--about-excerpt">
+						<?php the_excerpt(); ?>
+						<a href="#" class="collapsible-more-link">More</a>
+					</div>
+				</div>
 
-       <div class="row home--section-hr">
-           <div class="col-xs-4 col-md-5"></div>
-           <div class="col-xs-4 col-md-2">
-               <hr>
-           </div>
-           <div class="col-xs-4 col-md-5"></div>
-       </div> -->
+				<!-- Capabilities -->
+				<div class="collapsible-container collapse home--about-more__wrapper">
+					<div class="section-content__boxed">
+						<?php echo get_page( $post->ID )->post_content; ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- /About content -->
 
-       <!-- About title -->
-       <!-- <div class="row home--section-header">
-           <div class="col-md-5"></div>
-           <div class="col-md-2">
-               <h2><?php echo $header_title ?></h2>
-           </div>
-           <div class="col-md-5"></div>
-       </div> -->
 
-       <!-- About content / excerpt -->
-      <div class="row no-gutter about-container">
-          <div class="col-sm-12 col-md-2">
-          </div>
-          <div class="col-sm-12 col-md-2 about-featured-image__wrapper">
-          	  <img src="<?php the_post_thumbnail_url(); ?>" class="about-featured-image">
-          </div>
-          <div class="col-sm-12 col-md-6 home--about-excerpt">
-              <?php the_excerpt(); ?>
-              <a href="#" class="collapsible-more-link">More</a>
-          </div>
-          <div class="col-sm-12 col-md-2">
-          </div>
-      </div>
+	<?php wp_reset_postdata(); ?>
 
-       <!-- Capabilities -->
-       <div class="collapsible-container collapse container-fluid home--about-more__wrapper">
-           <?php echo get_page( $post->ID )->post_content; ?>
-      </div>
-
-	  <?php wp_reset_postdata(); ?>
-
-      <script type="text/javascript">
-          jQuery('.collapsible-more-link').click(function($event){
-              $event.preventDefault();
-              jQuery('.collapsible-container').slideToggle('slow');
-              jQuery('.collapsible-more-link').slideToggle('slow');
-          });
-      </script>
-
-   </div><!-- /About content -->
+	<script type="text/javascript">
+	  jQuery('.collapsible-more-link').click(function($event){
+	      $event.preventDefault();
+	      jQuery('.collapsible-container').slideToggle('slow');
+	      jQuery('.collapsible-more-link').slideToggle('slow');
+	  });
+	</script>
 
 
    <!-- Clients -->
@@ -230,7 +205,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
    	$header_title = get_post_meta($post->ID, '_nectar_header_title', true);
    	$header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
-   <div class="container-fluid section-content">
+   <div class="container-fluid section-content u-padding--top--none">
 
 		<!-- Clients Lead in -->
 		<!-- <div class="row home--section-lead-in">
@@ -295,7 +270,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
    <!-- Articles content -->
-   <div class="container-fluid section-content">
+   <div class="container-fluid section-content u-padding--top--none">
 
        <!-- Articles Lead in -->
        <!-- <div class="row home--section-lead-in">

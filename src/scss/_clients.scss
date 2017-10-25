@@ -7,9 +7,9 @@
     margin-top: -40px; // Pull the first row up
 }
 .homepage--client-logo {
-    width: 140px;
+    width: 180px;
     background-size: contain;
-    margin: 40px 20px 0 20px;
+    margin: 0;
 
     @media (max-width: $mobile-max-width) {
         width: calc(calc(100vw - 160px) / 3);
