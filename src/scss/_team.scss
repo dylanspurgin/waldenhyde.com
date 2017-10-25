@@ -2,19 +2,27 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
-    @media (min-width: $tablet-min-width) {
-        padding-left: 60px;
-    }
+    justify-content: flex-start;
 }
 
 
 .team-grid-item {
+    width: calc(33.333333vw - calc( calc(72px + 40px + 17px) / 3 )); // container padding left + space between items + 17px (scroll bar width)
+    margin: 10px;
 
-    width: calc(33vw - 20px);
-    padding: 10px;
+    @media (min-width: $tablet-min-width) {
+        &:nth-of-type(3n-2) {
+            margin-left: 0;
+        }
+
+        &:nth-of-type(3n) {
+            margin-right: 0;
+        }
+    }
+
 
     img {
+        width: 100%;
         max-width: 100%;
     }
 
@@ -28,7 +36,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        margin: 0;
         width: 100vw;
 
     }

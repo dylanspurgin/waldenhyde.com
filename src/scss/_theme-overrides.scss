@@ -17,6 +17,18 @@ body {
     background-color: $white;
 }
 
+.main-content.container {
+    @media (max-width: $mobile-max-width) {
+        max-width: none !important;
+        padding-left: $container-padding-phone;
+        padding-right: $container-padding-phone;
+    }
+
+    @media (min-width: $tablet-min-width) {
+        padding: 40px 17px 0 72px !important;
+    }
+}
+
 @media only screen and (max-width: $mobile-max-width) {
     .container-fluid {
         padding-left: $container-padding-phone;
@@ -26,21 +38,23 @@ body {
 
 @media only screen and (min-width: $tablet-min-width) and (max-width: $tablet-max-width) {
     .container-fluid {
-        padding-left: $container-padding-tablet;
+        padding-left: $container-padding-left;
         padding-right: $container-padding-tablet;
     }
 }
 
 @media only screen and (min-width: $desktop-min-width) {
     .container-fluid {
-        padding-left: $container-padding-desktop;
+        padding-left: $container-padding-left;
         padding-right: $container-padding-desktop;
     }
 }
 
-#page-header-bg h1 {
-    @include sans-serif-bold;
-    text-transform: uppercase;
+#page-header-bg {
+    h1 {
+        @include sans-serif-bold;
+        text-transform: uppercase;
+    }
 }
 
 strong {

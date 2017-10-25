@@ -83,7 +83,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 <!-- Uncomment to enable header slider content on work page -->
 <?php //echo nectar_page_header($post->ID); ?>
 
-<div class="home-page">
+<div class="work-page">
 
     <!-- Work -->
     <?php
@@ -103,7 +103,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
         <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
         <!-- Work Lead in -->
-        <div class="row home--section-lead-in">
+        <div class="row page-leadin">
             <div class="col-xs-1 col-sm-2 col-md-3"></div>
             <div class="col-xs-10 col-sm-8 col-md-6">
                 <?php echo get_post_meta($post->ID, '_nectar_header_subtitle', true); ?>
@@ -146,56 +146,36 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
         ?>
 
 		<div class="portfolio-items__container">
-		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
-			<?php $grid_index = $wp_query->current_post+1; ?>
+			<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 
-			<?php if (1 == $grid_index): ?>
-				<a href="<?php echo get_page_link(); ?>"
-	                class="portfolio-grid-item portfolio-grid-item--1"
-	                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-			<?php elseif (2 == $grid_index): ?>
-				<div class="portfolio-grid-row-2" id="pagetwo">
+				<?php $grid_index = $wp_query->current_post+1; ?>
+
+				<?php if (1 == $grid_index): ?>
+					<div class="portfolio-grid-items--1-2-3-4__container">
+				<?php elseif (2 == $grid_index): ?>
+						<div class="portfolio-grid-items--2-3-4__container">
+				<?php elseif (5 == $grid_index): ?>
+					<div class="portfolio-grid-items--5-6-7__container">
+				<?php endif; ?>
+
 					<a href="<?php echo get_page_link(); ?>"
-		                class="portfolio-grid-item portfolio-grid-item--2"
-		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+						class="portfolio-grid-item
+							portfolio-grid-item--<?php echo $grid_index ?>
+							js-portfolioItemWaypoint"
+						style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
+						<span class="portfolio-grid-item__copy__wrapper <?php if (get_post_meta($post->ID, '_nectar_portfolio_item_leadin_visible', true)) { echo 'portfolio-grid-item__copy__always-on'; } ?>">
+							<span class="portfolio-grid-item__title u-spaced-out"><?php the_title(); ?></span>
+							<span class="portfolio-grid-item__leadin"><?php echo get_post_meta($post->ID, '_nectar_portfolio_item_leadin', true); ?></span>
+						</span>
+					</a>
 
-			<?php elseif (3 == $grid_index): ?>
-			        <div class="portfolio-grid-items--3-4-5__container">
-						<div class="portfolio-grid-items--3-4__container">
-							<a href="<?php echo get_page_link(); ?>"
-			                	class="portfolio-grid-item portfolio-grid-item--3"
-				                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-			<?php elseif (4 == $grid_index): ?>
-							<a href="<?php echo get_page_link(); ?>"
-				                class="portfolio-grid-item portfolio-grid-item--4"
-				                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+				<?php if (4 == $grid_index): ?>
 						</div>
-			<?php elseif (5 == $grid_index): ?>
-						<a href="<?php echo get_page_link(); ?>"
-							class="portfolio-grid-item portfolio-grid-item--5"
-							style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
 					</div>
-				</div>
-			<?php elseif (6 == $grid_index): ?>
-				<div class="portfolio-grid-items--6-7__container">
-					<a href="<?php echo get_page_link(); ?>"
-		                class="portfolio-grid-item portfolio-grid-item--6"
-		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-			<?php elseif (7 == $grid_index): ?>
-					<a href="<?php echo get_page_link(); ?>"
-		                class="portfolio-grid-item portfolio-grid-item--7"
-		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-				</div>
-
-			<?php else: ?>
-
-				<a href="<?php echo get_page_link(); ?>"
-	                class="portfolio-grid-item portfolio-grid-item--8"
-	                style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
-				</a>
-
-			<?php endif; ?>
+				<?php elseif (7 == $grid_index): ?>
+					</div>
+				<?php endif; ?>
 
 		<?php endwhile; endif; ?>
 

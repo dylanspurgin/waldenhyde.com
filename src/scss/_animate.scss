@@ -31,3 +31,23 @@
 .fadeOut {
   animation-name: fadeOut;
 }
+
+
+
+@keyframes fadein50 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: .5;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

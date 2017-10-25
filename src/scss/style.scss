@@ -39,13 +39,17 @@ Domain Path: #{metadata(theme-text-domain-path)}
 @import "spacing";
 
 // Components
+@import "theme";
 @import "header";
 @import "pagination";
 @import "footer";
 
 // Pages
 @import "home";
+@import "about";
+@import "clients";
 @import "portfolio";
 @import "articles";
 @import "blog";
 @import "team";
+@import "work";

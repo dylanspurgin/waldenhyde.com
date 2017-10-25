@@ -32,64 +32,23 @@ $cta_btn_color = (!empty($options['cta-btn-color'])) ? $options['cta-btn-color']
 
 			<div class="row">
 
-				<?php
-
-				$footerColumns = (!empty($options['footer_columns'])) ? $options['footer_columns'] : '4';
-
-				if($footerColumns == '2'){
-					$footerColumnClass = 'col-xs-12 col-sm-12 col-md-6';
-				} else if($footerColumns == '3'){
-					$footerColumnClass = 'col-xs-4';
-				} else {
-					$footerColumnClass = 'col-xs-3';
-				}
-				?>
-
-				<div class="<?php echo $footerColumnClass;?>">
+				<div class="col-xs-12 col-md-6">
 				      <!-- Footer widget area 1 -->
 		              <?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar('Footer Area 1') ) : else : ?>
 		              	  <div class="widget">
-						  	 <h4 class="widgettitle">Widget Area 1</h4>
 						 	 <p class="no-widget-added"><a href="<?php echo admin_url('widgets.php'); ?>">Click here to assign a widget to this area.</a></p>
 				     	  </div>
 				     <?php endif; ?>
-				</div><!--/span_3-->
+				</div>
 
-				<div class="<?php echo $footerColumnClass;?>">
-					 <!-- Footer widget area 2 -->
-		             <?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar('Footer Area 2') ) : else : ?>
-		                  <div class="widget">
-						 	 <h4 class="widgettitle">Widget Area 2</h4>
+				<div class="col-xs-12 col-md-6">
+				      <!-- Footer widget area 2 -->
+		              <?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar('Footer Area 2') ) : else : ?>
+		              	  <div class="widget">
 						 	 <p class="no-widget-added"><a href="<?php echo admin_url('widgets.php'); ?>">Click here to assign a widget to this area.</a></p>
 				     	  </div>
 				     <?php endif; ?>
-				</div><!--/span_3-->
-
-				<?php if($footerColumns == '3' || $footerColumns == '4') { ?>
-					<div class="<?php echo $footerColumnClass;?>">
-						 <!-- Footer widget area 3 -->
-			              <?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar('Footer Area 3') ) : else : ?>
-			              	  <div class="widget">
-							  	<h4 class="widgettitle">Widget Area 3</h4>
-							  	<p class="no-widget-added"><a href="<?php echo admin_url('widgets.php'); ?>">Click here to assign a widget to this area.</a></p>
-							  </div>
-					     <?php endif; ?>
-
-					</div><!--/span_3-->
-				<?php } ?>
-
-				<?php if($footerColumns == '4') { ?>
-					<div class="<?php echo $footerColumnClass;?>">
-						 <!-- Footer widget area 4 -->
-			              <?php if ( function_exists('dynamic_sidebar') && dynamic_sidebar('Footer Area 4') ) : else : ?>
-			              	<div class="widget">
-							    <h4>Widget Area 4</h4>
-							    <p class="no-widget-added"><a href="<?php echo admin_url('widgets.php'); ?>">Click here to assign a widget to this area.</a></p>
-							 </div><!--/widget-->
-					     <?php endif; ?>
-
-					</div><!--/span_3-->
-				<?php } ?>
+				</div>
 
 			</div><!--/row-->
 
@@ -103,12 +62,12 @@ $cta_btn_color = (!empty($options['cta-btn-color'])) ? $options['cta-btn-color']
 	   if( $disable_footer_copyright == 'false') { ?>
 
 
-		<div class="row" id="copyright">
+		<div class="row">
 
 			<div class="container-fluid">
 
                 <div class="col-xs-12 col-sm-7">
-					<ul id="social">
+					<ul id="social" class="social-icons__container">
 						<?php  if(!empty($options['use-twitter-icon']) && $options['use-twitter-icon'] == 1) { ?> <li><a target="_blank" href="<?php echo $options['twitter-url']; ?>"><i class="icon-twitter"></i> </a></li> <?php } ?>
 						<?php  if(!empty($options['use-facebook-icon']) && $options['use-facebook-icon'] == 1) { ?> <li><a target="_blank" href="<?php echo $options['facebook-url']; ?>"><i class="icon-facebook"></i> </a></li> <?php } ?>
 						<?php  if(!empty($options['use-vimeo-icon']) && $options['use-vimeo-icon'] == 1) { ?> <li><a target="_blank" href="<?php echo $options['vimeo-url']; ?>"> <i class="icon-vimeo"></i> </a></li> <?php } ?>
@@ -132,13 +91,13 @@ $cta_btn_color = (!empty($options['cta-btn-color'])) ? $options['cta-btn-color']
 				</div><!--/span_7-->
 
 				<div class="col-xs-12 col-sm-5">
-
-					<?php if(!empty($options['disable-auto-copyright']) && $options['disable-auto-copyright'] == 1) { ?>
-						<span class="copyright"><?php if(!empty($options['footer-copyright-text'])) echo $options['footer-copyright-text']; ?> </span>
-					<?php } else { ?>
-						<span class="copyright">&copy; <?php echo date('Y') . ' ' . get_bloginfo('name'); ?>. <?php if(!empty($options['footer-copyright-text'])) echo $options['footer-copyright-text']; ?> </span>
-					<?php } ?>
-
+					<div class="copyright__wrapper">
+						<?php if(!empty($options['disable-auto-copyright']) && $options['disable-auto-copyright'] == 1) { ?>
+							<span class="copyright"><?php if(!empty($options['footer-copyright-text'])) echo $options['footer-copyright-text']; ?> </span>
+						<?php } else { ?>
+							<span class="copyright">&copy; <?php echo date('Y') . ' ' . get_bloginfo('name'); ?>. <?php if(!empty($options['footer-copyright-text'])) echo $options['footer-copyright-text']; ?> </span>
+						<?php } ?>
+					</div>
 				</div><!--/span_5-->
 
 			</div><!--/container-->

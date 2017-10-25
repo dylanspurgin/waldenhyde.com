@@ -6,20 +6,12 @@ $white: #fff;
 $gray: #777;
 $tan: #f3eee8;
 $pink: #b53468;
+$navy: rgb(0,23,48);
 
-// Width of the overall site as well as the left and right content columns
-//$width-site:    1000px;
-//$width-left:    650px;
-//$width-right:   350px;
-
-$container-padding-phone: 20px;
-$container-padding-tablet: 40px;
-$container-padding-desktop: 80px;
-
-// Breakpoints (TODO - figure out if these are still used)
-// $break-small:   480px;
-// $break-medium:  620px;
-// $break-large:   800px;
+$container-padding-phone: 40px;
+$container-padding-tablet: 17px;
+$container-padding-desktop: 17px;
+$container-padding-left: 72px; // wide enough for the new left hand logo/menu UI
 
 // Bootstrap Breakpoints
 // xs = 0 - 767px

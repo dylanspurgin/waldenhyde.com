@@ -15,17 +15,19 @@
         $parent_style = 'parent-style';
 
         wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
-        wp_enqueue_style( 'child-style',
-            get_stylesheet_directory_uri() . '/style.css',
-            array( $parent_style ),
-            wp_get_theme()->get('Version')
-        );
+
+        // This results in css loaded twice
+        // wp_enqueue_style( 'child-style',
+        //     get_stylesheet_directory_uri() . '/style.css',
+        //     array( $parent_style ),
+        //     wp_get_theme()->get('Version')
+        // );
     }
     add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
 
 
     // Add site lead-in
-    function your_theme_new_customizer_settings($wp_customize) {
+    function add_custom_setting_leadin($wp_customize) {
         // add a setting for the site logo
         $wp_customize->add_setting('site_leadin');
         // Add a control to upload the logo
@@ -41,7 +43,8 @@
                 )
         ));
     }
-    add_action('customize_register', 'your_theme_new_customizer_settings');
+    add_action('customize_register', 'add_custom_setting_leadin');
+
 
 
     function theme_footer_js() {
@@ -95,4 +98,6 @@
     # Portfolio Meta Override
     #-----------------------------------------------------------------#
     include("portfolio-meta-override.php");
+
+    include("page-meta.php");
 ?>

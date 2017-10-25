@@ -54,69 +54,49 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
 ?>
 
-<style>
-	<?php if($span_num == 'elastic-portfolio-item') { ?>
-		.container-wrap { padding-bottom: 0px!important; }
-		#call-to-action .triangle { display: none; }
-	<?php } ?>
-
-	<?php if($span_num == 'elastic-portfolio-item' && !empty($bg)) { ?>
-		.container-wrap { padding-top: 0px!important; }
-	<?php } ?>
-
-	<?php if($inline_filters == '1' && empty($bg)) { ?>
-		.page-header-no-bg { display: none; }
-		.container-wrap { padding-top: 0px!important; }
-		body #portfolio-filters-inline { margin-top: -50px!important; padding-top: 5.8em!important; }
-	<?php } ?>
-
-	<?php if($inline_filters == '1' && empty($bg) && $span_num != 'elastic-portfolio-item') { ?>
-		#portfolio-filters-inline.non-fw { margin-top: -37px!important; padding-top: 6.5em!important;}
-	<?php } ?>
-
-	<?php if($inline_filters == '1' && !empty($bg) && $span_num != 'elastic-portfolio-item') { ?>
-		.container-wrap { padding-top: 3px!important; }
-	<?php } ?>
-</style>
-
-
-
-<!-- Uncomment to enable header slider content on home page -->
-<?php //echo nectar_page_header($post->ID); ?>
 
 <div class="home-page">
-    <!-- Work -->
-    <?php
-        $the_slug = 'work';
-        $args = array(
-          'pagename'    => $the_slug,
-          'post_type'   => 'page',
-          'post_status' => 'publish',
-          'numberposts' => 1
-        );
-        $post = get_posts($args)[0];
-        $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
-        $header_title = get_post_meta($post->ID, '_nectar_header_title', true);
-    ?>
-	<div class="container-fluid no-gutter section-content">
 
-		<div class="site-tagline__container">
+	<div class="container-fluid no-gutter">
+
+		<!-- <div class="site-tagline__container">
             <h2 class="site-tagline"><?php echo get_bloginfo('description') ?></h2>
-			<section class="site-leadin"><?php echo get_theme_mod('site_leadin') ?></section>
-        </div>
+        </div> -->
 
-		<div class="more-link__container js-scrollToWrapper js-homeMoreLinkWrapper">
-			<div class="more-link__wrapper">
-				<a href="#pagetwo" class="more-link">More<br><span>&#8595;</span></a>
-			</div>
+		<div class="more-link__wrapper js-scrollToWrapper js-homeMoreLinkWrapper">
+			<a href="#pagetwo" class="more-link">More<br><span>&#8595;</span></a>
 		</div>
 
+		<?php
+			$hero_mp4 = get_post_meta($post->ID, '_wh_hero_video_mp4', true);
+			$hero_webm = get_post_meta($post->ID, '_wh_hero_video_webm', true);
+			$hero_image = get_post_meta($post->ID, '_wh_hero_video_poster', true);
+
+			if ($hero_mp4 && $hero_webm && $hero_image) :
+		?>
+			<video poster="<?php echo $hero_image ?>"
+				class="home--hero-video js-homeHero" playsinline autoplay muted loop>
+				<source src="<?php echo $hero_webm ?>" type="video/webm">
+				<source src="<?php echo $hero_mp4 ?>" type="video/mp4">
+			</video>
+		<?php elseif ($hero_image): ?>
+			<img class="home--hero-video js-homeHero" src="<?php echo $hero_image ?>" >
+		<?php endif; ?>
+	</div>
+
+	<div class="container-fluid no-gutter section-content" id="pagetwo">
+		<div class="site-leadin__wrapper">
+			<p class="site-leadin"><?php echo get_theme_mod('site_leadin') ?></p>
+		</div>
+	</div>
+
+	<div class="container-fluid no-gutter">
 		<?php
             // Get the portfolio posts
 			$portfolio = array(
                 'post_type' => 'portfolio',
                 'project-type'=> ['home page grid'],
-                'posts_per_page' => -1,
+                'posts_per_page' => 7,
                 'meta_key'=>'grid_order',
                 'orderby' => 'meta_value_num',
                 'order' => 'ASC'
@@ -130,41 +110,29 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 			<?php $grid_index = $wp_query->current_post+1; ?>
 
 			<?php if (1 == $grid_index): ?>
-				<a href="<?php echo get_page_link(); ?>"
-	                class="portfolio-grid-item portfolio-grid-item--1"
-	                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+				<div class="portfolio-grid-items--1-2-3-4__container">
 			<?php elseif (2 == $grid_index): ?>
-				<div class="portfolio-grid-row-2" id="pagetwo">
-					<a href="<?php echo get_page_link(); ?>"
-		                class="portfolio-grid-item portfolio-grid-item--2"
-		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-
-			<?php elseif (3 == $grid_index): ?>
-			        <div class="portfolio-grid-items--3-4-5__container">
-						<div class="portfolio-grid-items--3-4__container">
-							<a href="<?php echo get_page_link(); ?>"
-			                	class="portfolio-grid-item portfolio-grid-item--3"
-				                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-			<?php elseif (4 == $grid_index): ?>
-							<a href="<?php echo get_page_link(); ?>"
-				                class="portfolio-grid-item portfolio-grid-item--4"
-				                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
-						</div>
+					<div class="portfolio-grid-items--2-3-4__container">
 			<?php elseif (5 == $grid_index): ?>
-						<a href="<?php echo get_page_link(); ?>"
-							class="portfolio-grid-item portfolio-grid-item--5"
-							style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
+				<div class="portfolio-grid-items--5-6-7__container">
+			<?php endif; ?>
+
+			<a href="<?php echo get_page_link(); ?>"
+				class="portfolio-grid-item
+					portfolio-grid-item--<?php echo $grid_index ?>
+					js-portfolioItemWaypoint"
+				style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
+				<span class="portfolio-grid-item__copy__wrapper <?php if (get_post_meta($post->ID, '_nectar_portfolio_item_leadin_visible', true)) { echo 'portfolio-grid-item__copy__always-on'; } ?>">
+					<span class="portfolio-grid-item__title u-spaced-out"><?php the_title(); ?></span>
+					<span class="portfolio-grid-item__leadin"><?php echo get_post_meta($post->ID, '_nectar_portfolio_item_leadin', true); ?></span>
+				</span>
+			</a>
+
+
+			<?php if (4 == $grid_index): ?>
 					</div>
 				</div>
-			<?php elseif (6 == $grid_index): ?>
-				<div class="portfolio-grid-items--6-7__container">
-					<a href="<?php echo get_page_link(); ?>"
-		                class="portfolio-grid-item portfolio-grid-item--6"
-		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
 			<?php elseif (7 == $grid_index): ?>
-					<a href="<?php echo get_page_link(); ?>"
-		                class="portfolio-grid-item portfolio-grid-item--7"
-		                style="background-image: url('<?php the_post_thumbnail_url(); ?>')"></a>
 				</div>
 			<?php endif; ?>
 
@@ -174,74 +142,11 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
 
 
-
-
-   <!-- Clients -->
-   <?php
-       $the_slug = 'clients';
-       $args = array(
-         'pagename'        => $the_slug,
-         'post_type'   => 'page',
-         'post_status' => 'publish',
-         'numberposts' => 1
-       );
-       $post = get_posts($args)[0];
-       $header_title = get_post_meta($post->ID, '_nectar_header_title', true);
-       $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
-   ?>
-   <div class="container-fluid section-content">
-
-       <!-- Clients Lead in -->
-       <div class="row home--section-lead-in">
-           <div class="col-md-2"></div>
-           <div class="col-md-8">
-               <?php echo $header_subtitle ?>
-           </div>
-           <div class="col-md-2"></div>
-       </div>
-
-       <div class="row home--section-hr">
-           <div class="col-xs-4 col-md-5"></div>
-           <div class="col-xs-4 col-md-2">
-               <hr>
-           </div>
-           <div class="col-xs-4 col-md-5"></div>
-       </div>
-
-       <!-- Clients title -->
-       <div class="row home--section-header">
-           <div class="col-md-5"></div>
-           <div class="col-md-2">
-               <h2><?php echo $header_title ?></h2>
-           </div>
-           <div class="col-md-5"></div>
-       </div>
-
-       <!-- Clients grid items -->
-       <?php
-           // Get the Client posts
-           $portfolio = array(
-               'posts_per_page' => '-1',
-               'post_type' => 'portfolio',
-               'project-type'=> ['Clients'],
-               'paged'=> $paged
-           );
-           $wp_query = new WP_Query($portfolio);
-       ?>
-       <?php if(have_posts()) : while(have_posts()) : the_post(); ?>
-           <div class="homepage--client-logo fixed-ratio col-xs-4 col-sm-3 col-md-3 col-lg-2 no-gutter"
-		   	style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
-		</div><!-- / client logo -->
-       <?php endwhile; endif; wp_reset_postdata(); ?>
-   </div><!-- /Clients content -->
-
-
-
    <!-- About -->
    <?php
        $the_slug = 'about';
        $args = array(
-         'pagename'        => $the_slug,
+         'pagename'    => $the_slug,
          'post_type'   => 'page',
          'post_status' => 'publish',
          'numberposts' => 1
@@ -251,12 +156,10 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
    <!-- About content -->
-   <div class="container-fluid about-container section-content">
-
-       <div id="about" ></div>
+   <div class="container-fluid section-content" id="about">
 
        <!-- About Lead in -->
-       <div class="row home--section-lead-in">
+       <!-- <div class="row home--section-lead-in">
            <div class="col-md-2"></div>
            <div class="col-md-8">
                <?php echo $header_subtitle ?>
@@ -270,80 +173,39 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                <hr>
            </div>
            <div class="col-xs-4 col-md-5"></div>
-       </div>
+       </div> -->
 
        <!-- About title -->
-       <div class="row home--section-header">
+       <!-- <div class="row home--section-header">
            <div class="col-md-5"></div>
            <div class="col-md-2">
                <h2><?php echo $header_title ?></h2>
            </div>
            <div class="col-md-5"></div>
-       </div>
+       </div> -->
 
        <!-- About content / excerpt -->
-      <div class="row">
-          <div class="col-md-2 col-xs-3">
+      <div class="row no-gutter about-container">
+          <div class="col-sm-12 col-md-2">
           </div>
-          <div class="col-md-2 hidden-sm hidden-xs">
-              <img src="<?php the_post_thumbnail_url(); ?>" width="50%">
+          <div class="col-sm-12 col-md-2 about-featured-image__wrapper">
+          	  <img src="<?php the_post_thumbnail_url(); ?>" class="about-featured-image">
           </div>
-          <div class="col-md-6 home--section-excerpt">
+          <div class="col-sm-12 col-md-6 home--about-excerpt">
               <?php the_excerpt(); ?>
               <a href="#" class="collapsible-more-link">More</a>
           </div>
-          <div class="col-md-2">
+          <div class="col-sm-12 col-md-2">
           </div>
       </div>
-
-       <?php wp_reset_postdata(); ?>
 
        <!-- Capabilities -->
-       <div class="collapsible-container collapse container-fluid">
-           <div class="row home--section-hr">
-               <div class="col-xs-4 col-md-5"></div>
-               <div class="col-xs-4 col-md-2">
-                   <hr>
-               </div>
-               <div class="col-xs-4 col-md-5"></div>
-           </div>
-
-           <!-- Capabilities title -->
-           <div class="row home--section-header">
-               <div class="col-md-4">&nbsp;</div>
-               <div class="col-md-4">
-                   <h2>Capabilities</h2>
-               </div>
-               <div class="col-md-4">&nbsp;</div>
-           </div>
-
-           <!-- Capabilities content / excerpt -->
-          <div class="row u-padding--bottom--none">
-              <div class="col-xs-12 col-md-1"></div>
-              <div class="col-xs-12 col-sm-6 col-md-5">
-                  <h4 class="capabilities-header u-uppercase u-spaced-out">Strategy</h4>
-                  <p class="capabilities-text">Walden Hyde formed from the merger of research firm Kickstand and creative house Sustineo. Research and strategy are core to who we are and how we work. We have conducted consumer field research, market analysis, and strategic planning for Unilever, Nestlé Purina, Klean Kanteen, and others. We also released the largest syndicated study to date on sustainability in mainstream America. All agencies say they do strategy. Some actually do. Walden Hyde has a dedicated strategy team of made up of researchers, anthropologists, and brand analysts.</p>
-              </div>
-			  <div class="col-xs-12 col-sm-6 col-md-5">
-                  <h4 class="capabilities-header u-uppercase u-spaced-out">Network</h4>
-                  <p class="capabilities-text">The way brands and consumers relate is constantly evolving. We can help you stay relevant in the ways you engage your audience. Our network capabilities include influencers, social media, and partnerships. For example: tailoring your influencer strategy begins with knowing your goals and connecting with the right influencers in the right way. By establishing long-lasting relationships with influencers and managing every step of the process, Walden Hyde makes influencer collaboration as effective and seamless for your team as possible, while requiring minimal effort on your part to maintain.</p>
-              </div>
-			  <div class="col-xs-12 col-md-1"></div>
-		  </div>
-
-		  <div class="row">
-			  <div class="col-xs-12 col-md-1"></div>
-			  <div class="col-xs-12 col-sm-6 col-md-5">
-                  <h4 class="capabilities-header u-uppercase u-spaced-out">Creative</h4>
-                  <p class="capabilities-text">We believe great design changes the world. Walden Hyde is a full-service creative agency, delivering award-winning visual experiences that connect brands and consumers. All of our creative work is driven by insights and strategy. Our capabilities include digital, web, print, packaging, and space design.</p>
-              </div>
-			  <div class="col-xs-12 col-sm-6 col-md-5">
-                  <h4 class="capabilities-header u-uppercase u-spaced-out">Media</h4>
-                  <p class="capabilities-text">Predictive marketing, social media, and the rise of influencers are changing the landscape of media buying. We work with clients through every step of the media process from building comprehensive, agile media plans to launching, monitoring, tracking, and adjusting ad buys and creative.</p>
-              </div>
-             <div class="col-xs-12 col-md-1"></div>
-          </div>
+       <div class="collapsible-container collapse container-fluid home--about-more__wrapper">
+           <?php echo get_page( $post->ID )->post_content; ?>
       </div>
+
+	  <?php wp_reset_postdata(); ?>
+
       <script type="text/javascript">
           jQuery('.collapsible-more-link').click(function($event){
               $event.preventDefault();
@@ -355,12 +217,73 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
    </div><!-- /About content -->
 
 
+   <!-- Clients -->
+   <?php
+   	$the_slug = 'clients';
+   	$args = array(
+   	  'pagename'        => $the_slug,
+   	  'post_type'   => 'page',
+   	  'post_status' => 'publish',
+   	  'numberposts' => 1
+   	);
+   	$post = get_posts($args)[0];
+   	$header_title = get_post_meta($post->ID, '_nectar_header_title', true);
+   	$header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
+   ?>
+   <div class="container-fluid section-content">
+
+		<!-- Clients Lead in -->
+		<!-- <div class="row home--section-lead-in">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<?php echo $header_subtitle ?>
+			</div>
+			<div class="col-md-2"></div>
+		</div> -->
+
+		<div class="row home--section-hr">
+			<div class="col-xs-4 col-md-5"></div>
+			<div class="col-xs-4 col-md-2">
+				<hr>
+			</div>
+			<div class="col-xs-4 col-md-5"></div>
+		</div>
+
+		<!-- Clients title -->
+		<div class="row home--section-header">
+			<div class="col-md-5"></div>
+			<div class="col-md-2">
+				<h2><?php echo $header_title ?></h2>
+			</div>
+			<div class="col-md-5"></div>
+		</div>
+
+		<!-- Clients grid items -->
+		<?php
+			// Get the Client posts
+			$portfolio = array(
+				'posts_per_page' => '-1',
+				'post_type' => 'portfolio',
+				'project-type'=> ['Clients'],
+				'paged'=> $paged
+			);
+			$wp_query = new WP_Query($portfolio);
+		?>
+		<div class="homepage--clients__container">
+			<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
+				<div class="homepage--client-logo fixed-ratio"
+				 style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
+			 </div><!-- / client logo -->
+			<?php endwhile; endif; wp_reset_postdata(); ?>
+		</div>
+
+   </div><!-- /Clients content -->
 
 
 
    <!-- Articles -->
    <?php
-       $the_slug = 'Articles';
+       $the_slug = 'Insights';
        $args = array(
          'pagename'        => $the_slug,
          'post_type'   => 'page',
@@ -375,13 +298,13 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
    <div class="container-fluid section-content">
 
        <!-- Articles Lead in -->
-       <div class="row home--section-lead-in">
+       <!-- <div class="row home--section-lead-in">
            <div class="col-md-2"></div>
            <div class="col-md-8">
                <?php echo $header_subtitle ?>
            </div>
            <div class="col-md-2"></div>
-       </div>
+       </div> -->
 
        <div class="row home--section-hr">
            <div class="col-xs-4 col-md-5"></div>
@@ -412,14 +335,15 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
            $posts = get_posts($args);
        ?>
 
-			 <div class="row articles-grid">
+	   <div class="article-grid__container">
 
-       <?php foreach ($posts as $post) {
-		   // Use Link URL value if set. Otherwise use post link
-	       $external_link = get_post_meta($post->ID, '_nectar_link', true);
-		   $link = strlen($external_link) > 1 ? $external_link : get_permalink($post->ID);
-	   ?>
-           <div class="article-grid-item col-xs-12 col-sm-4">
+	       <?php foreach ($posts as $post) {
+			   // Use Link URL value if set. Otherwise use post link
+		       $external_link = get_post_meta($post->ID, '_nectar_link', true);
+			   $link = strlen($external_link) > 1 ? $external_link : get_permalink($post->ID);
+		   ?>
+
+           <div class="article-grid-item">
 			   <div class="article-image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
 			   </div>
                <h2 class="article-title">
@@ -437,8 +361,8 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                <br >
 			   <hr>
            </div>
-       <?php } wp_reset_postdata(); ?>
-			 </div>
+       	   <?php } wp_reset_postdata(); ?>
+		</div>
    </div><!-- /Articles content -->
 
 

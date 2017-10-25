@@ -25,7 +25,7 @@ endwhile; endif;
 	if(empty($bg) && empty($bg_color)) { ?>
 		<div class="not-loaded default-blog-title fullscreen-header" id="page-header-bg" data-alignment="center" data-parallax="0" data-height="450" style="height: 450px;">
 			<div class="container">
-				<div class="row">
+				<div class="row no-gutter">
 					<div class="col span_6 section-title blog-title">
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 						<div class="author-section">
@@ -59,9 +59,6 @@ endwhile; endif;
  } ?>
 
 
-
-
-
 <div class="container-wrap <?php echo ($fullscreen_header == true) ? 'fullscreen-blog-header': null; ?> <?php if($blog_type == 'std-blog-fullwidth' || $hide_sidebar == '1') echo 'no-sidebar'; ?>">
 
 	<div class="container main-content">
@@ -72,7 +69,7 @@ endwhile; endif;
 
 			    if((empty($bg) && empty($bg_color)) && $fullscreen_header != true) { ?>
 
-					<div class="row heading-title">
+					<div class="row no-gutter heading-title">
 						<div class="col span_12 section-title blog-title">
 							<h1 class="entry-title"><?php the_title(); ?></h1>
 
@@ -101,7 +98,7 @@ endwhile; endif;
 
 		<?php } ?>
 
-		<div class="row">
+		<div class="row no-gutter">
 
 			<?php $options = get_option('salient');
 
@@ -172,7 +169,7 @@ endwhile; endif;
 
 
 		<!--ascend only author/comment positioning-->
-		<div class="row">
+		<div class="row no-gutter">
 
 			<?php if($theme_skin == 'ascend' && $fullscreen_header == true) { ?>
 

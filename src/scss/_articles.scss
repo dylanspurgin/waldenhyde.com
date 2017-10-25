@@ -1,4 +1,31 @@
+.article-grid__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
 .article-grid-item {
+
+    width: calc(33.333333vw - calc( calc(72px + 40px + 17px) / 3 )); // container padding left + space between items + 17px (scroll bar width)
+
+    @media (max-width: $mobile-max-width) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    @media (min-width: $tablet-min-width) {
+        margin: 10px;
+
+        &:nth-of-type(3n-2) {
+            margin-left: 0;
+        }
+
+        &:nth-of-type(3n) {
+            margin-right: 0;
+        }
+    }
 
     .article-image {
         height: 200px;

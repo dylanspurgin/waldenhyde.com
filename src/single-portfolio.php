@@ -53,7 +53,7 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
 
 	<div class="container-wrap">
 
-		<div class="container main-content">
+		<div class="container-fluid main-content">
 
             <!-- Mobile portfolio navigation + title -->
             <div class="row no-gutter hidden-md hidden-lg portfolio-nav--mobile" id="portfolio-nav">
@@ -108,7 +108,7 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
                 </div>
             </div>
 
-			<div class="row <?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
+			<div class="<?php if(!empty($enable_gallery_slider) && $enable_gallery_slider == 'on') echo 'gallery-slider'; ?>">
 
 					<div id="post-area" class="col <?php if($fwp != 'enabled') { echo 'span_9'; } else { echo 'span_12'; } ?>">
 
@@ -218,27 +218,49 @@ $full_width_portfolio = (!empty($fwp) && $fwp == 'enabled') ? 'id="full_width_po
 
                             // Other work item thumbnails
                             if ($project_cat=='work') {
+
                                 echo '<div class="portfolio--recent-work">';
                                 echo '<div class="portfolio--recent-work--image-mock">';
                                 echo '<div class="portfolio--recent-work--container">';
                                 echo '<h4 class="portfolio--recent-work-title">See More Work</h4>';
                                 echo '<p>';
 
-                                // wp_reset_postdata();
+                                // Grab all portfolio items
+                                $current_post_id = $post->ID;
                     			$other_work_query = array(
                                     'post_type' => $post->post_type,
-                                    'project-type'=> ['home page grid'],
-                                    'posts_per_page' => 3,
+                                    'project-type'=> ['work'],
+                                    'posts_per_page' => -1,
                                     'orderby' => 'date',
-                                    'order' => 'DESC',
-                                    'post__not_in' => array($post->ID)
+                                    'order' => 'DESC'
                     			);
-
                     			$wp_query2 = new WP_Query($other_work_query);
 
+                                $print_count = 0;
+                                $current_found = false;
+
+                                // Show next three after current
                                 while ( $wp_query2->have_posts() ) {
                                     $wp_query2->the_post();
-                                    echo '<a href="'.post_permalink( $wp_query2->post->ID ).'" class="portfolio--recent-work-thumbnail" style="background-image: url(\''.get_the_post_thumbnail_url( $wp_query2->post->ID, array(180, 180) ).'\')"></a>';
+                                    if ($post->ID == $current_post_id) {
+                                        $current_found = true;
+                                    } elseif ($current_found && $print_count != 3) {
+                                        echo '<a href="'.post_permalink( $wp_query2->post->ID ).'" class="portfolio--recent-work-thumbnail" style="background-image: url(\''.get_the_post_thumbnail_url( $wp_query2->post->ID, array(180, 180) ).'\')"></a>';
+                                        $print_count++;
+                                    }
+                                }
+
+                                // If less than three after current, show up to
+                                // three starting from beginning
+                                if ($print_count < 3) {
+                                    $wp_query2->rewind_posts();
+                                    while ( $wp_query2->have_posts() ) {
+                                        $wp_query2->the_post();
+                                        if ($post->ID != $current_post_id && $print_count < 3) {
+                                            echo '<a href="'.post_permalink( $wp_query2->post->ID ).'" class="portfolio--recent-work-thumbnail" style="background-image: url(\''.get_the_post_thumbnail_url( $wp_query2->post->ID, array(180, 180) ).'\')"></a>';
+                                            $print_count++;
+                                        }
+                                    }
                                 }
 
                                 echo '</p></div></div></div>';

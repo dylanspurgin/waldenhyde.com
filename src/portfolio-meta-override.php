@@ -266,6 +266,20 @@ function nectar_metabox_portfolio_salient_second_child(){
 					'type' => 'text',
 					'std' => ''
 				),
+                array(
+					'name' => __('Grid overlay text', NECTAR_THEME_NAME),
+					'desc' => __('Text to display under title when user hovers element on homepage grid.', NECTAR_THEME_NAME),
+					'id' => '_nectar_portfolio_item_leadin',
+					'type' => 'text',
+					'std' => ''
+				),
+                array(
+					'name' => __('Grid overlay text always on', NECTAR_THEME_NAME),
+					'desc' => __('Show grid overlay text always (Shown on hover if unchecked).', NECTAR_THEME_NAME),
+					'id' => '_nectar_portfolio_item_leadin_visible',
+					'type' => 'checkbox',
+					'std' => ''
+				),
 				array(
 					'name' => __('Project Accent Color', NECTAR_THEME_NAME),
 					'desc' => __('This will be used in applicable project styles in the portfolio thumbnail view.', NECTAR_THEME_NAME),

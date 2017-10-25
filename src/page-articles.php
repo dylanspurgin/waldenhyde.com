@@ -91,7 +91,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
         <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
         <!-- Lead in -->
-        <div class="row home--section-lead-in">
+        <div class="row page-leadin">
             <div class="col-xs-1 col-sm-2 col-md-3"></div>
             <div class="col-xs-10 col-sm-8 col-md-6">
                 <?php echo get_post_meta($post->ID, '_nectar_header_subtitle', true); ?>
@@ -131,8 +131,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
             $query = new WP_Query($args);
         ?>
 
-        <div class="articles-grid">
-            <div class="row">
+        <div class="article-grid__container">
             <?php if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post(); ?>
                 <?php
 					// Use Link URL value if set. Otherwise use post link
@@ -140,7 +139,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 		 		    $link = strlen($external_link) > 1 ? $external_link : get_permalink($post->ID);
                     $index = $query->current_post+1;
                 ?>
-                <div class="article-grid-item col-xs-12 col-sm-4">
+                <div class="article-grid-item">
      			   <div class="article-image" style="background-image: url(<?php the_post_thumbnail_url(); ?>)">
      			   </div>
                     <h2 class="article-title">
@@ -158,9 +157,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
                     <br >
      			   <hr>
                 </div>
-                <?php if ($index%3 == 0) echo '</div><div class="row">'; ?>
     		<?php endwhile; endif; ?>
-            </div>
         </div>
 
         <div class="row wh-pagination">

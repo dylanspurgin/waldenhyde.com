@@ -49,6 +49,7 @@ gulp.task('scripts-bundle', ['scripts-lint'], function () {
 gulp.task('scripts-minify', ['scripts-bundle'], function () {
     return gulp.src(config.minify.src)
         .pipe(plugins.sourcemaps.init())
+        .pipe(plugins.babel({presets: ['env']}))
         .pipe(plugins.uglify(config.minify.uglify))
         .pipe(plugins.sourcemaps.write('./'))
         .pipe(gulp.dest(config.minify.dest));

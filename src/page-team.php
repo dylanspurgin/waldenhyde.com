@@ -11,24 +11,12 @@ $options = get_option('salient');
 
 <div class="home-page">
 
-    <?php
-        // $the_slug = 'team';
-        // $args = array(
-        //   'pagename'    => $the_slug,
-        //   'post_type'   => 'page',
-        //   'post_status' => 'publish',
-        //   'numberposts' => 1
-        // );
-        // $post = get_posts($args)[0];
-        // $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
-        // $header_title = get_post_meta($post->ID, '_nectar_header_title', true);
-    ?>
-	<div class="container-fluid no-gutter section-content">
+	<div class="container-fluid section-content">
 
         <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
-        <!-- Work Lead in -->
-        <div class="row home--section-lead-in">
+        <!-- Lead in -->
+        <div class="row page-leadin">
             <div class="col-xs-1 col-sm-2 col-md-3"></div>
             <div class="col-xs-10 col-sm-8 col-md-6">
                 <?php echo get_post_meta($post->ID, '_nectar_header_subtitle', true); ?>

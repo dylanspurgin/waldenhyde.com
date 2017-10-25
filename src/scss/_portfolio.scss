@@ -34,7 +34,7 @@
 }
 
 #portfolio-nav.portfolio-nav--desktop {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-bottom: 60px;
 
     .portfolio-nav--all-items {
@@ -74,14 +74,14 @@
 }
 
 .portfolio--item-description {
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 26px;
     margin-top: -4px; // Line top up with portfolio--item-subtitle
 }
 @media (max-width: $mobile-max-width) {
     .portfolio--item-description {
-        font-size: 18px;
-        line-height: 20px;
+        font-size: 16px;
+        line-height: 18px;
     }
 }
 
@@ -125,4 +125,22 @@ a.portfolio--recent-work-thumbnail:last-of-type {
         width: 80px;
         height: 80px;
     }
+}
+
+#portfolio-extra {
+    p {
+        margin: 0;
+        padding: 0;
+    }
+    p.wh-portfolio-copy {
+        font-size: 32px;
+        padding: 60px 20vw;
+        text-align: center;
+
+        @media (max-width: $mobile-max-width) {
+            font-size: 26px;
+            padding: 60px 20px;
+        }
+    }
+
 }
