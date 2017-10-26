@@ -1,0 +1,15 @@
+.button {
+
+    display: inline-block;
+    padding: 6px 10px;
+    @include sans-serif-bold;
+
+    background-color: $navy;
+    color: $white;
+
+    &.button-outline {
+        background-color: $white;
+        color: $navy;
+        border: solid 2px $navy;
+    }
+}

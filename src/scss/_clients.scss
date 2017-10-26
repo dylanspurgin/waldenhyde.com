@@ -12,8 +12,8 @@
     margin: 0;
 
     @media (max-width: $mobile-max-width) {
-        width: calc(calc(100vw - 160px) / 3);
-        margin: 20px;
+        width: calc(calc(100vw - 120px) / 2);
+        margin: 0;
 
         &:nth-of-type(3n-2) {
             margin-left: 0;

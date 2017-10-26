@@ -70,7 +70,7 @@
     text-decoration: none;
     @include sans-serif-bold;
     text-transform: uppercase;
-    display: inline-block;
+    display: block;
 }
 .portfolio-grid-item__leadin {
     position: relative;
