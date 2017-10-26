@@ -142,7 +142,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 
    <div class="container-fluid no-gutter section-content__boxed" id="pagetwo">
 	   <div class="section-callout__wrapper u-align--center">
-		   <a href="/work" class="button button-outline">VIEW WORK</a>
+		   <a href="/work" class="button button-outline">SEE MORE WORK</a>
 	   </div>
    </div>
 
@@ -160,7 +160,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
        $header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
    <!-- About content -->
-	<div class="container-fluid no-gutter section-content" id="about">
+	<div class="container-fluid no-gutter section-content u-padding--top--none" id="about">
 		<div class="home--about__wrapper">
 			<div class="section-content__boxed">
 
