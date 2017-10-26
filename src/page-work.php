@@ -164,7 +164,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 							portfolio-grid-item--<?php echo $grid_index ?>
 							js-portfolioItemWaypoint"
 						style="background-image: url('<?php the_post_thumbnail_url(); ?>')">
-						<span class="portfolio-grid-item__copy__wrapper <?php if (get_post_meta($post->ID, '_nectar_portfolio_item_leadin_visible', true)) { echo 'portfolio-grid-item__copy__always-on'; } ?>">
+						<span class="portfolio-grid-item__copy__wrapper <?php if (get_post_meta($post->ID, '_nectar_portfolio_item_leadin_visible', true)=='on') { echo 'portfolio-grid-item__copy__always-on'; } ?>">
 							<span class="portfolio-grid-item__title u-spaced-out"><?php the_title(); ?></span>
 							<span class="portfolio-grid-item__leadin"><?php echo get_post_meta($post->ID, '_nectar_portfolio_item_leadin', true); ?></span>
 						</span>
