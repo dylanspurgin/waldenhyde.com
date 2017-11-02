@@ -5,7 +5,7 @@
 
 
     // More link only shown on mobile
-    if (jQuery(window).width() > 690) {
+    if ($homeMoreLink.length && jQuery(window).width() > 690) {
         // Position to bottom of video
         var videoHeight = $hero.outerHeight();
         var viewportHeight = jQuery(window).height();

@@ -12,11 +12,6 @@
                 }
             },
             offset: 'bottom-in-view'
-            // offset: function () {
-            //     let vw = Waypoint.viewportWidth();
-            //     let vh = Waypoint.viewportHeight();
-            //     return (vh / 2) - (vw / 2);
-            // }
         })
     })
 

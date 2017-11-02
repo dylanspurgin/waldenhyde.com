@@ -54,59 +54,6 @@
         color: $white;
     }
 
-    // Newsletter signup form
-
-    .widget.widget_wysija {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-
-        &>* {
-            width: 100%;
-            max-width: 500px;
-        }
-
-        @media (max-width: $tablet-max-width) {
-            padding: 55px 0;
-            align-items: flex-start;
-        }
-    }
-
-    .widget.widget_wysija h4 {
-        margin: 2px 0 4px 0;
-        color: white;
-    }
-    form.widget_wysija {
-        display: flex;
-        width: 100%;
-        flex-direction: row;
-        @include sans-serif;
-    }
-    .wysija-input {
-        background-color: transparent;
-        border: solid 1px white;
-        font-size: 16px;
-        color: white;
-        padding: 6px !important;
-
-        &::placeholder {
-            color: white;
-        }
-    }
-    .wysija-paragraph {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
-    .wysija-submit {
-        border-radius: 0;
-        background: transparent;
-        border: solid 1px white;
-        margin: 0 0 0 -1px;
-        @include sans-serif-bold;
-        text-transform: uppercase;
-    }
-
 }
 
 // Mobile specific styles

@@ -80,6 +80,9 @@ var trackOutboundLink = function(url, redirect) {
 
 <div class="header-wrapper js-headerWrapper">
 
+	<!-- Prevent JS error in parent theme that expects this element -->
+	<div id="header-outer" data-header-resize="0" style="display:none;"></div>
+
 	<header>
 
 		<!-- Mobile menu hamburger button -->

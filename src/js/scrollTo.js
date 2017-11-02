@@ -13,11 +13,13 @@
         hash = hash || window.location.hash;
         if (hash.length) {
             var $target = jQuery(hash.toLowerCase());
-            jQuery('html,body').animate({
-                scrollTop: $target.offset().top
-            }, {
-                duration: 600
-            });
+            if ($target.length) {
+                jQuery('html,body').animate({
+                    // scrollTop: $target.offset().top
+                }, {
+                    duration: 600
+                });
+            }
         }
     }
 

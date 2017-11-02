@@ -1,0 +1,97 @@
+// Newsletter signup form
+#footer-outer, .post {
+    .widget.widget_wysija {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &>* {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        @media (max-width: $tablet-max-width) {
+            padding: 55px 0;
+            align-items: flex-start;
+        }
+    }
+
+    .widget.widget_wysija h4 {
+        margin: 2px 0 4px 0;
+    }
+    form.widget_wysija {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        @include sans-serif;
+    }
+    .wysija-input {
+        background-color: transparent;
+        font-size: 16px;
+        padding: 6px !important;
+    }
+    .wysija-paragraph {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    .wysija-submit {
+        border-radius: 0;
+        margin: 0 0 0 -1px;
+        @include sans-serif-bold;
+        text-transform: uppercase;
+    }
+
+    .wysija-msg {
+        @include serif;
+
+        .allmsgs {
+            .updated {
+                font-size: 16px;
+                background-color: $tan;
+                padding: 20px;
+                border: solid 1px $navy;
+            }
+        }
+    }
+}
+
+// Forms in post content specific
+.post {
+    .widget.widget_wysija h4 {
+        color: $navy;
+    }
+    .wysija-input {
+        border: solid 1px $navy;
+        color: $navy;
+        &::placeholder {
+            color: $navy;
+        }
+    }
+    .wysija-submit {
+        color: $navy;
+        background: transparent;
+        border: solid 1px $navy;
+        &:hover {
+            color: $white;
+        }
+    }
+}
+
+// Form in footer
+#footer-outer {
+    .widget.widget_wysija h4 {
+        color: white;
+    }
+    .wysija-input {
+        border: solid 1px white;
+        color: white;
+        &::placeholder {
+            color: white;
+        }
+    }
+    .wysija-submit {
+        background: transparent;
+        border: solid 1px white;
+    }
+}

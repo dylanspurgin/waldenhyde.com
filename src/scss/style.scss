@@ -33,7 +33,7 @@ Domain Path: #{metadata(theme-text-domain-path)}
 
 @import "breakpoints";
 @import "theme-overrides";
-// @import "boxed-overrides"; // Not currently using boxed layout
+@import "nectar";
 @import "bootstrap-customizations";
 @import "text";
 @import "spacing";
@@ -45,6 +45,7 @@ Domain Path: #{metadata(theme-text-domain-path)}
 @import "pagination";
 @import "footer";
 @import "section";
+@import "mailpoet";
 
 // Pages
 @import "home";
