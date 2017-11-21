@@ -100,4 +100,5 @@
     include("portfolio-meta-override.php");
 
     include("page-meta.php");
+    include("includes/attachments.php");
 ?>

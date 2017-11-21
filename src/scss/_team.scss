@@ -26,6 +26,20 @@
         max-width: 100%;
     }
 
+    img:nth-of-type(2n) {
+        display: none;
+    }
+
+    &:hover {
+        img:first-of-type {
+            display: none;
+        }
+        img:nth-of-type(2n) {
+            display: block;
+        }
+    }
+
+
     .team-position {
         @include sans-serif-bold;
         text-transform: uppercase;

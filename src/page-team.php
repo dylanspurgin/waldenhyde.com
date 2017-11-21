@@ -62,7 +62,16 @@ $options = get_option('salient');
 		<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
             <!-- Portfolio grid item -->
             <div class="team-grid-item">
-				<img class="team-grid-thumbnail" src="<?php the_post_thumbnail_url(); ?>">
+
+
+				<?php $attachments = new Attachments( 'wh_team_headshots' ); ?>
+				<?php if( $attachments->exist() ) : ?>
+					<?php while( $attachments->get() ) : ?>
+						<img class="team-grid-thumbnail" src="<?php echo $attachments->src('full'); ?>">
+					<?php endwhile; ?>
+				<?php endif; ?>
+
+				<!-- <img class="team-grid-thumbnail" src="<?php the_post_thumbnail_url(); ?>"> -->
 				<div class="team-meta__container">
 					<h3 class="title"><?php the_title(); ?></h3>
 					<h4 class="team-position"><?php echo get_post_meta($post->ID, '_nectar_portfolio_item_subtitle', true); ?></h4>
