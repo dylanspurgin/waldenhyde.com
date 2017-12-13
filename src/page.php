@@ -1,25 +1,44 @@
 <?php get_header(); ?>
 
-<?php nectar_page_header($post->ID); ?>
+<div class="home-page">
 
-<div class="container-wrap">
+	<div class="container-fluid section-content">
 
-	<div class="container main-content">
+        <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
-		<div class="row no-gutter">
+        <!-- Lead in -->
+        <div class="row page-leadin">
+            <div class="col-xs-1 col-sm-2 col-md-3"></div>
+            <div class="col-xs-10 col-sm-8 col-md-6">
+                <?php echo get_post_meta($post->ID, '_nectar_header_subtitle', true); ?>
+            </div>
+            <div class="col-xs-1 col-sm-2 col-md-3"></div>
+        </div>
 
-			<?php
-			 //buddypress
-			 global $bp;
-			 if($bp && !bp_is_blog_page()) echo '<h1>' . get_the_title() . '</h1>'; ?>
+        <div class="row home--section-hr">
+            <div class="col-xs-4 col-md-5"></div>
+            <div class="col-xs-4 col-md-2">
+                <hr>
+            </div>
+            <div class="col-xs-4 col-md-5"></div>
+        </div>
 
-			<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
+        <div class="row home--section-header">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <h2>
+                    <?php echo get_post_meta($post->ID, '_nectar_header_title', true); ?>
+                </h2>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
 
-				<?php the_content(); ?>
+        <?php endwhile; endif; wp_reset_postdata(); ?>
 
-			<?php endwhile; endif; ?>
-
-
+		<div class="row">
+            <div class="col-xs-12">
+                <?php the_content(); ?>
+            </div>
 		</div><!--/row-->
 
 	</div><!--/container-->

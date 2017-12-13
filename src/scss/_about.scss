@@ -4,7 +4,7 @@
     background-color: $navy;
 
     @media (max-width: $mobile-max-width) {
-        margin: -60px -40px !important;
+        margin: 0 -40px !important;
     }
 
     .collapsible-more-link {

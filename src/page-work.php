@@ -157,6 +157,8 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 						<div class="portfolio-grid-items--2-3-4__container">
 				<?php elseif (5 == $grid_index): ?>
 					<div class="portfolio-grid-items--5-6-7__container">
+				<?php elseif ($grid_index > 7): ?>
+					<div class="portfolio-grid-item--8-plus__wrapper">
 				<?php endif; ?>
 
 					<a href="<?php echo get_page_link(); ?>"
@@ -174,6 +176,8 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 						</div>
 					</div>
 				<?php elseif (7 == $grid_index): ?>
+					</div>
+				<?php elseif ($grid_index > 7): ?>
 					</div>
 				<?php endif; ?>
 
