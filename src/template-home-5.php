@@ -164,22 +164,28 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
 		<div class="home--about__wrapper">
 			<div class="section-content__boxed">
 
+				<!-- Capabilities -->
+				<div class="home--about-more__wrapper">
+					<?php echo get_page( $post->ID )->post_content; ?>
+				</div>
+
+				<div class="home--about-more__wrapper row home--section-hr u-margin--bottom">
+					<div class="col-xs-4 col-md-5"></div>
+					<div class="col-xs-4 col-md-2">
+						<hr class="u-color--white" />
+					</div>
+					<div class="col-xs-4 col-md-5"></div>
+				</div>
+
 				<div class="home--about-excerpt__wrapper">
 					<div class="about-featured-image__wrapper">
 						<img src="<?php the_post_thumbnail_url(); ?>" class="about-featured-image">
 					</div>
 					<div class="home--about-excerpt">
 						<?php the_excerpt(); ?>
-						<a href="#" class="collapsible-more-link">More</a>
 					</div>
 				</div>
 
-				<!-- Capabilities -->
-				<div class="collapsible-container collapse home--about-more__wrapper">
-					<div class="section-content__boxed">
-						<?php echo get_page( $post->ID )->post_content; ?>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div><!-- /About content -->

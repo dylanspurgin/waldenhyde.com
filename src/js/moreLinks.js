@@ -2,8 +2,6 @@
     const $homeMoreLink = jQuery('.js-homeMoreLinkWrapper');
     const $hero = jQuery('.js-homeHero');
 
-
-
     // More link only shown on mobile
     if ($homeMoreLink.length && jQuery(window).width() > 690) {
         // Position to bottom of video

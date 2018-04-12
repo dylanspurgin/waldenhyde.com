@@ -182,6 +182,12 @@
     width: calc(100vw/3);
     height: calc(100vw/3);
 
+    @media (max-width: $mobile-max-width) {
+        width: 100%;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
     .portfolio-grid-item__title {
         font-size: 1.4vw;
     }

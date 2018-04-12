@@ -3,7 +3,7 @@
     const headerDownClass = 'menu-down';
     const $header = jQuery('.js-headerWrapper');
 
-    initMobileHeader();
+    // initMobileHeader();
 
     function initMobileHeader () {
         var minumumScrollTop = 100;

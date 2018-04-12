@@ -49,9 +49,9 @@
     color: white;
     font-size: 18px;
 
-    @media (max-width: $mobile-max-width) {
-        margin: auto -40px;
-    }
+    // @media (max-width: $mobile-max-width) {
+    //     margin: auto -40px;
+    // }
 
     .capabilities-header {
         @include sans-serif-bold;
