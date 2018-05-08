@@ -132,6 +132,34 @@ a.portfolio--recent-work-thumbnail:last-of-type {
         margin: 0;
         padding: 0;
     }
+    p.section-copy {
+        font-size: 24px;
+        margin: 60px auto;
+        max-width: 800px;
+        border-left: 4px $pink solid;
+        padding-left: 12px;
+    }
+    @media (max-width: $mobile-max-width) {
+        .section-content__boxed {
+            padding: 20px 40px;
+        }
+        .section-callout {
+            font-size: 24px;
+        }
+        p.section-copy {
+            font-size: 16px;
+            line-height: 18px;
+            margin: 40px auto;
+            border: none;
+            padding-left: 0;
+        }
+        .full-width-image__wrapper {
+            margin-left: -40px;
+            margin-right: -40px;
+        }
+    }
+
+
     p.wh-portfolio-copy {
         font-size: 32px;
         padding: 60px 20vw;
