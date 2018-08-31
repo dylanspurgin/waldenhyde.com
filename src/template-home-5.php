@@ -215,7 +215,7 @@ $bg = get_post_meta($post->ID, '_nectar_header_bg', true);
    	$header_title = get_post_meta($post->ID, '_nectar_header_title', true);
    	$header_subtitle = get_post_meta($post->ID, '_nectar_header_subtitle', true);
    ?>
-   <div class="container-fluid section-content u-padding--top--none">
+   <div id="clients" class="container-fluid section-content u-padding--top--none">
 
 		<!-- Clients Lead in -->
 		<!-- <div class="row home--section-lead-in">
